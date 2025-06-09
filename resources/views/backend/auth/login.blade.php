@@ -46,15 +46,19 @@
         <div class="col-md-6">
             <div class="ibox-content">
 
-                <form method="post" class="m-t" role="form" action="">
-
+                <form method="post" class="m-t" role="form" action="{{ route('auth.login') }}">
+                    @csrf
                     <div class="form-group">
                         <input
                             type="text"
                             name="email"
                             class="form-control"
                             placeholder="Email"
+                            value="{{ old('email') }}"
                         >
+                        @if ($errors->has('email'))
+                            <span class="error-message">* {{ $errors->first('email') }}</span>
+                        @endif
                     </div>
                     <div class="form-group">
                         <input
@@ -63,7 +67,9 @@
                             class="form-control"
                             placeholder="Password"
                         >
-                      
+                        @if ($errors->has('password'))
+                            <span class="error-message">* {{ $errors->first('password') }}</span>
+                        @endif
                     </div>
                     <button type="submit" class="btn btn-success block full-width m-b">Đăng nhập</button>
 
