@@ -41,7 +41,7 @@ class FragmentRendererPass implements CompilerPassInterface
                 throw new InvalidArgumentException(sprintf('Class "%s" used for service "%s" cannot be found.', $class, $id));
             }
             if (!$r->isSubclassOf(FragmentRendererInterface::class)) {
-                throw new InvalidArgumentException(sprintf('Service "%s" must implement interface "%s".', $id, FragmentRendererInterface::class));
+                throw new InvalidArgumentException(sprintf('Service "%s" must implement Interface "%s".', $id, FragmentRendererInterface::class));
             }
 
             foreach ($tags as $tag) {

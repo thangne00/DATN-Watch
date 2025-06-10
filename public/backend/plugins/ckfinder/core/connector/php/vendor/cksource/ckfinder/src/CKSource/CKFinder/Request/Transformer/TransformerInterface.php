@@ -17,7 +17,7 @@ namespace CKSource\CKFinder\Request\Transformer;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * The TransformerInterface interface.
+ * The TransformerInterface Interface.
  *
  * Request transformers transform any kind of HTTP request to a request
  * format understandable by the CKFinder connector.

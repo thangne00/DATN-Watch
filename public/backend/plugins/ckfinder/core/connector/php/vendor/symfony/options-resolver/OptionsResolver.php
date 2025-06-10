@@ -639,7 +639,7 @@ class OptionsResolver implements Options
      * Sets allowed types for an option.
      *
      * Any type for which a corresponding is_<type>() function exists is
-     * acceptable. Additionally, fully-qualified class or interface names may
+     * acceptable. Additionally, fully-qualified class or Interface names may
      * be passed.
      *
      * @param string|string[] $allowedTypes One or more accepted types
@@ -673,7 +673,7 @@ class OptionsResolver implements Options
      * The types are merged with the allowed types defined previously.
      *
      * Any type for which a corresponding is_<type>() function exists is
-     * acceptable. Additionally, fully-qualified class or interface names may
+     * acceptable. Additionally, fully-qualified class or Interface names may
      * be passed.
      *
      * @param string|string[] $allowedTypes One or more accepted types

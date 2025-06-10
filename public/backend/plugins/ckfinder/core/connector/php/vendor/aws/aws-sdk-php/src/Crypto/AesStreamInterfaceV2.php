@@ -7,7 +7,7 @@ interface AesStreamInterfaceV2 extends StreamInterface
 {
     /**
      * Returns an AES recognizable name, such as 'AES/GCM/NoPadding'. V2
-     * interface is accessible from a static context.
+     * Interface is accessible from a static context.
      *
      * @return string
      */

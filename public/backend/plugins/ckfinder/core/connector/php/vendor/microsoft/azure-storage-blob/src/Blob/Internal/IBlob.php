@@ -31,7 +31,7 @@ use MicrosoftAzure\Storage\Common\Models\Range;
 use Psr\Http\Message\StreamInterface;
 
 /**
- * This interface has all REST APIs provided by Windows Azure for Blob service.
+ * This Interface has all REST APIs provided by Windows Azure for Blob service.
  *
  * @ignore
  * @category  Microsoft
@@ -1185,7 +1185,7 @@ interface IBlob
         $blob,
         BlobModels\UndeleteBlobOptions $options = null
     );
-    
+
     /**
      * Undeletes a blob.
      *
@@ -1202,7 +1202,7 @@ interface IBlob
         $blob,
         BlobModels\UndeleteBlobOptions $options = null
     );
-    
+
     /**
     * Reads or downloads a blob from the system, including its metadata and
     * properties.

@@ -63,7 +63,7 @@ class AesGcm
     }
 
     /**
-     * Encryption interface for AES-GCM
+     * Encryption Interface for AES-GCM
      *
      * @param string $plaintext  Message to be encrypted
      * @param string $nonce      Number to be used ONCE
@@ -112,7 +112,7 @@ class AesGcm
     }
 
     /**
-     * Decryption interface for AES-GCM
+     * Decryption Interface for AES-GCM
      *
      * @param string $ciphertext Ciphertext to decrypt
      * @param string $nonce      Number to be used ONCE

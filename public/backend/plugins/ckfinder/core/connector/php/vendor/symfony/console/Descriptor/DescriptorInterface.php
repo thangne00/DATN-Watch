@@ -14,7 +14,7 @@ namespace Symfony\Component\Console\Descriptor;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Descriptor interface.
+ * Descriptor Interface.
  *
  * @author Jean-François Simon <contact@jfsimon.fr>
  */

@@ -81,7 +81,7 @@ implements Baz
                 new CodeSample(
                     '<?php
 
-interface Bar extends
+Interface Bar extends
     Bar, BarBaz, FooBarBaz
 {}
 ',
@@ -170,7 +170,7 @@ $foo = new class(){};
         $classDefInfo = $this->getClassyDefinitionInfo($tokens, $classyIndex);
 
         // PSR2 4.1 Lists of implements MAY be split across multiple lines, where each subsequent line is indented once.
-        // When doing so, the first item in the list MUST be on the next line, and there MUST be only one interface per line.
+        // When doing so, the first item in the list MUST be on the next line, and there MUST be only one Interface per line.
 
         if (false !== $classDefInfo['implements']) {
             $classDefInfo['implements'] = $this->fixClassyDefinitionImplements(

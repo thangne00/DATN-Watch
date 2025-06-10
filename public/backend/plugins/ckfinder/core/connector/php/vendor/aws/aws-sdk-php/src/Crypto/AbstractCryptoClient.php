@@ -73,7 +73,7 @@ abstract class AbstractCryptoClient
     abstract protected function getCipherFromAesName($aesName);
 
     /**
-     * Dependency to provide an interface for building an encryption stream for
+     * Dependency to provide an Interface for building an encryption stream for
      * data given cipher details, metadata, and materials to do so.
      *
      * @param Stream $plaintext Plain-text data to be encrypted using the
@@ -97,7 +97,7 @@ abstract class AbstractCryptoClient
     );
 
     /**
-     * Dependency to provide an interface for building a decryption stream for
+     * Dependency to provide an Interface for building a decryption stream for
      * cipher text given metadata and materials to do so.
      *
      * @param string $cipherText Plain-text data to be decrypted using the

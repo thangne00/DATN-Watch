@@ -17,7 +17,7 @@ namespace CKSource\CKFinder\Plugin;
 use CKSource\CKFinder\CKFinder;
 
 /**
- * The Plugin interface.
+ * The Plugin Interface.
  */
 interface PluginInterface
 {

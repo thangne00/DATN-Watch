@@ -82,7 +82,7 @@ final class PhpdocNoUselessInheritdocFixer extends AbstractFixer
         // figure out where the classy ends
         $classEndIndex = $tokens->findBlockEnd(Tokens::BLOCK_TYPE_CURLY_BRACE, $classOpenIndex);
 
-        // is classy extending or implementing some interface
+        // is classy extending or implementing some Interface
         $extendingOrImplementing = $this->isExtendingOrImplementing($tokens, $index, $classOpenIndex);
 
         if (!$extendingOrImplementing) {
@@ -151,7 +151,7 @@ final class PhpdocNoUselessInheritdocFixer extends AbstractFixer
     private function isUsingTrait(Tokens $tokens, int $classIndex, int $classOpenIndex, int $classCloseIndex): bool
     {
         if ($tokens[$classIndex]->isGivenKind(T_INTERFACE)) {
-            // cannot use Trait inside an interface
+            // cannot use Trait inside an Interface
             return false;
         }
 

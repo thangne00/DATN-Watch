@@ -57,7 +57,7 @@ interface SessionStorageInterface
      * Regenerates id that represents this storage.
      *
      * This method must invoke session_regenerate_id($destroy) unless
-     * this interface is used for a storage object designed for unit
+     * this Interface is used for a storage object designed for unit
      * or functional testing where a real PHP session would interfere
      * with testing.
      *
@@ -85,7 +85,7 @@ interface SessionStorageInterface
     /**
      * Force the session to be saved and closed.
      *
-     * This method must invoke session_write_close() unless this interface is
+     * This method must invoke session_write_close() unless this Interface is
      * used for a storage object design for unit or functional testing where
      * a real PHP session would interfere with testing, in which case
      * it should actually persist the session data if required.

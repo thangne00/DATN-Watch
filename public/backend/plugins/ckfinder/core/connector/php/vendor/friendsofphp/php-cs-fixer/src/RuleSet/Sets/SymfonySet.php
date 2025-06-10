@@ -217,7 +217,7 @@ final class SymfonySet extends AbstractRuleSetDescription
                     'include_once',
                     'instanceof',
                     'insteadof',
-                    'interface',
+                    'Interface',
                     'match',
                     'named_argument',
                     'namespace',

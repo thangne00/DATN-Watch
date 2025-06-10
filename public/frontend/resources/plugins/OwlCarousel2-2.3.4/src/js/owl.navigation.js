@@ -36,7 +36,7 @@
 		this._pages = [];
 
 		/**
-		 * All DOM elements of the user interface.
+		 * All DOM elements of the user Interface.
 		 * @protected
 		 * @type {Object}
 		 */
@@ -278,7 +278,7 @@
 	};
 
 	/**
-	 * Draws the user interface.
+	 * Draws the user Interface.
 	 * @todo The option `dotsData` wont work.
 	 * @protected
 	 */

@@ -29,7 +29,7 @@ interface ConfigurableFixerInterface extends FixerInterface
      * Using empty array makes fixer to use default configuration
      * (or reset configuration from previously configured back to default one).
      *
-     * Some fixers may have no configuration, then - simply don't implement this interface.
+     * Some fixers may have no configuration, then - simply don't implement this Interface.
      * Other ones may have configuration that will change behavior of fixer,
      * eg `php_unit_strict` fixer allows to configure which methods should be fixed.
      * Finally, some fixers need configuration to work, eg `header_comment`.

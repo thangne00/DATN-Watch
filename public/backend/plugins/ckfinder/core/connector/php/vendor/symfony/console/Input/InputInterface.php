@@ -15,7 +15,7 @@ use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Exception\RuntimeException;
 
 /**
- * InputInterface is the interface implemented by all input classes.
+ * InputInterface is the Interface implemented by all input classes.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  *

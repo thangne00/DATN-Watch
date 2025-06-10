@@ -15,9 +15,9 @@
 namespace CKSource\CKFinder\Authentication;
 
 /**
- * The AuthenticationInterface interface.
+ * The AuthenticationInterface Interface.
  *
- * An interface for authentication methods.
+ * An Interface for authentication methods.
  */
 interface AuthenticationInterface
 {

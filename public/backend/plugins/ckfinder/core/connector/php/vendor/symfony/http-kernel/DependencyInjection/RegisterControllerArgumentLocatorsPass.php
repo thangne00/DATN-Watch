@@ -174,7 +174,7 @@ class RegisterControllerArgumentLocatorsPass implements CompilerPassInterface
                     }
 
                     if ($type && !$p->isOptional() && !$p->allowsNull() && !class_exists($type) && !interface_exists($type, false)) {
-                        $message = sprintf('Cannot determine controller argument for "%s::%s()": the $%s argument is type-hinted with the non-existent class or interface: "%s".', $class, $r->name, $p->name, $type);
+                        $message = sprintf('Cannot determine controller argument for "%s::%s()": the $%s argument is type-hinted with the non-existent class or Interface: "%s".', $class, $r->name, $p->name, $type);
 
                         // see if the type-hint lives in the same namespace as the controller
                         if (0 === strncmp($type, $class, strrpos($class, '\\'))) {

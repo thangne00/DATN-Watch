@@ -580,7 +580,7 @@ const reservedKeywords = new Set([
   'debugger',
   'function',
   'arguments',
-  'interface',
+  'Interface',
   'protected',
   'implements',
   'instanceof',

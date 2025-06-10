@@ -17,9 +17,9 @@ namespace CKSource\CKFinder\Security\Csrf;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * The TokenValidatorInterface interface.
+ * The TokenValidatorInterface Interface.
  *
- * An interface for CSRF token validators.
+ * An Interface for CSRF token validators.
  */
 interface TokenValidatorInterface
 {

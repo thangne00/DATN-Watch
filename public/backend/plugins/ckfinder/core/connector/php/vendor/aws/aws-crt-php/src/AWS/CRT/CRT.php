@@ -10,7 +10,7 @@ use AWS\CRT\Internal\Extension;
 use \RuntimeException;
 
 /**
- * Wrapper for the interface to the CRT. There only ever needs to be one of these, but
+ * Wrapper for the Interface to the CRT. There only ever needs to be one of these, but
  * additional instances won't cost anything other than their memory.
  * Creating an instance of any NativeResource will activate the CRT binding. User code
  * should only need to create one of these if they are only accessing CRT:: static functions.

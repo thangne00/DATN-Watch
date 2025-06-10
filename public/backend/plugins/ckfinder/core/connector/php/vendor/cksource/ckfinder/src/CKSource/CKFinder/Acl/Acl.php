@@ -33,7 +33,7 @@ class Acl implements AclInterface
     protected $rules = [];
 
     /**
-     * @brief The role context interface.
+     * @brief The role context Interface.
      *
      * By default an instance of SessionRoleContext is used as a role context.
      * You can easily add a new class that implements RoleContextInterface to

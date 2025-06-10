@@ -30,7 +30,7 @@ $GLOBALS['CKFLang'] = array (
 		'207' => 'Le fichier téléchargé a été renommé "%1".',
 		'300' => 'Le déplacement des fichiers a échoué.',
 		'301' => 'La copie des fichiers a échoué.',
-		'500' => 'L\'interface de gestion des fichiers est désactivé. Contactez votre administrateur et vérifier le fichier de configuration de CKFinder.',
+		'500' => 'L\'Interface de gestion des fichiers est désactivé. Contactez votre administrateur et vérifier le fichier de configuration de CKFinder.',
 		'501' => 'La fonction "miniatures" est désactivée.',
 	)
 );

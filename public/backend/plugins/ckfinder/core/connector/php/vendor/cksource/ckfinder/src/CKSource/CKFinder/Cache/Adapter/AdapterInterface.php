@@ -15,7 +15,7 @@
 namespace CKSource\CKFinder\Cache\Adapter;
 
 /**
- * The AdapterInterface interface.
+ * The AdapterInterface Interface.
  */
 interface AdapterInterface
 {

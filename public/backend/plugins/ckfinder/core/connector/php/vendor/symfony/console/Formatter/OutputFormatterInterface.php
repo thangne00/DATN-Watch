@@ -12,7 +12,7 @@
 namespace Symfony\Component\Console\Formatter;
 
 /**
- * Formatter interface for console output.
+ * Formatter Interface for console output.
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */

@@ -2,7 +2,7 @@
 namespace Aws;
 
 /**
- * Represents a simple cache interface.
+ * Represents a simple cache Interface.
  */
 interface CacheInterface
 {

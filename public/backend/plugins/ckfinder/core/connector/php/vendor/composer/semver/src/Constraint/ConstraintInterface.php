@@ -12,9 +12,9 @@
 namespace Composer\Semver\Constraint;
 
 /**
- * DO NOT IMPLEMENT this interface. It is only meant for usage as a type hint
+ * DO NOT IMPLEMENT this Interface. It is only meant for usage as a type hint
  * in libraries relying on composer/semver but creating your own constraint class
- * that implements this interface is not a supported use case and will cause the
+ * that implements this Interface is not a supported use case and will cause the
  * composer/semver components to return unexpected results.
  */
 interface ConstraintInterface

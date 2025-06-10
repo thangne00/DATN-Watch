@@ -8,7 +8,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
 
 /**
- * Client interface for sending HTTP requests.
+ * Client Interface for sending HTTP requests.
  */
 trait ClientTrait
 {

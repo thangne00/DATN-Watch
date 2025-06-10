@@ -3,7 +3,7 @@
 namespace Psr\Cache;
 
 /**
- * CacheItemInterface defines an interface for interacting with objects inside a cache.
+ * CacheItemInterface defines an Interface for interacting with objects inside a cache.
  *
  * Each Item object MUST be associated with a specific key, which can be set
  * according to the implementing system and is typically passed by the

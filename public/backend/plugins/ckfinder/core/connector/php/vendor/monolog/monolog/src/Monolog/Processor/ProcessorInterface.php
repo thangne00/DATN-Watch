@@ -12,7 +12,7 @@
 namespace Monolog\Processor;
 
 /**
- * An optional interface to allow labelling Monolog processors.
+ * An optional Interface to allow labelling Monolog processors.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */

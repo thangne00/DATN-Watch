@@ -25,7 +25,7 @@
 namespace MicrosoftAzure\Storage\Common\Internal\Serialization;
 
 /**
- * The serialization interface.
+ * The serialization Interface.
  *
  * @ignore
  * @category  Microsoft

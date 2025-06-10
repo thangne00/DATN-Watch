@@ -15,7 +15,7 @@
 namespace CKSource\CKFinder;
 
 /**
- * The ContainerAware interface.
+ * The ContainerAware Interface.
  */
 interface ContainerAwareInterface
 {

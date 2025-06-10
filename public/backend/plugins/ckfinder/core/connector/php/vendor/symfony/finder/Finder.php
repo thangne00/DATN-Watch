@@ -599,7 +599,7 @@ class Finder implements \IteratorAggregate, \Countable
     /**
      * Returns an Iterator for the current Finder configuration.
      *
-     * This method implements the IteratorAggregate interface.
+     * This method implements the IteratorAggregate Interface.
      *
      * @return \Iterator<string, SplFileInfo>
      *
