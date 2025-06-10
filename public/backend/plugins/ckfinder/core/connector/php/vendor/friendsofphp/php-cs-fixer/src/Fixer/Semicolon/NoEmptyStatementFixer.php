@@ -122,7 +122,7 @@ final class NoEmptyStatementFixer extends AbstractFixer
      * Test for the following cases
      * - just '{' '}' block (following open tag or ';')
      * - if, else, elseif
-     * - interface, trait, class (but not anonymous)
+     * - Interface, trait, class (but not anonymous)
      * - catch, finally (but not try)
      * - for, foreach, while (but not 'do - while')
      * - switch
@@ -149,7 +149,7 @@ final class NoEmptyStatementFixer extends AbstractFixer
             return;
         }
 
-        // check for namespaces and class, interface and trait definitions
+        // check for namespaces and class, Interface and trait definitions
         if ($tokens[$beforeCurlyOpeningIndex]->isGivenKind(T_STRING)) {
             $classyTestIndex = $tokens->getPrevMeaningfulToken($beforeCurlyOpeningIndex);
 

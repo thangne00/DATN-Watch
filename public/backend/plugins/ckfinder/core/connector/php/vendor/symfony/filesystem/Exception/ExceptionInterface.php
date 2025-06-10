@@ -12,7 +12,7 @@
 namespace Symfony\Component\Filesystem\Exception;
 
 /**
- * Exception interface for all exceptions thrown by the component.
+ * Exception Interface for all exceptions thrown by the component.
  *
  * @author Romain Neutron <imprec@gmail.com>
  */

@@ -15,9 +15,9 @@
 namespace CKSource\CKFinder\Acl\User;
 
 /**
- * The role context interface.
+ * The role context Interface.
  *
- * You can implement this interface to get the current user role in your application.
+ * You can implement this Interface to get the current user role in your application.
  * By default Access Control Lists use SessionRoleContext to get the user role from the
  * defined $_SESSION field.
  */

@@ -35024,7 +35024,7 @@ var XRef = (function XRefClosure() {
       //      /ID [ <81b14aafa313db63dbd6f981e49f94f4> ]
       //    >>
       // The parser goes through the entire stream << ... >> and provides
-      // a getter interface for the key-value table
+      // a getter Interface for the key-value table
       var dict = parser.getObj();
 
       // The pdflib PDF generator can generate a nested trailer dictionary

@@ -233,6 +233,6 @@ abstract class AbstractDoctrineAnnotationFixer extends AbstractFixer implements 
             return false;
         }
 
-        return $tokens[$this->classyElements[$index]['classIndex']]->isGivenKind(T_CLASS); // interface, enums and traits cannot have doctrine annotations
+        return $tokens[$this->classyElements[$index]['classIndex']]->isGivenKind(T_CLASS); // Interface, enums and traits cannot have doctrine annotations
     }
 }

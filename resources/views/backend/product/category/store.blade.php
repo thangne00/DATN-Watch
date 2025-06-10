@@ -1,19 +1,23 @@
-@include('backend.dashboard.component.breadcrumb')
+@include('backend.dashboard.component.breadcrumb', ['title' => $config['seo'][$config['method']]['title']])
 @include('backend.dashboard.component.formError')
-
-<form action="" method="post" class="box">
+@php
+    $url = ($config['method'] == 'create') ? route('product.catalogue.store') : route('product.catalogue.update', [$productCatalogue->id, $queryUrl ?? '']);
+@endphp
+<form action="{{ $url }}" method="post" class="box">
+    @csrf
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
             <div class="col-lg-9">
                 <div class="ibox">
                     <div class="ibox-title">
-                        <h5>Title</h5>
+                        <h5>{{ __('messages.tableHeading') }}</h5>
                     </div>
                     <div class="ibox-content">
-                        @include('backend.dashboard.component.content')
+                        @include('backend.dashboard.component.content', ['model' => ($productCatalogue) ?? null])
                     </div>
                 </div>
-                @include('backend.dashboard.component.album')
+                @include('backend.dashboard.component.album', ['model' => ($productCatalogue) ?? null])
+                @include('backend.dashboard.component.seo', ['model' => ($productCatalogue) ?? null])
             </div>
             <div class="col-lg-3">
                 @include('backend.product.catalogue.component.aside')

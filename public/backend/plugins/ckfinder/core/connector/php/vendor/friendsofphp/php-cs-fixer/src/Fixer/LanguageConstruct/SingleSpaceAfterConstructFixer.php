@@ -69,7 +69,7 @@ final class SingleSpaceAfterConstructFixer extends AbstractFixer implements Conf
         'include_once' => T_INCLUDE_ONCE,
         'instanceof' => T_INSTANCEOF,
         'insteadof' => T_INSTEADOF,
-        'interface' => T_INTERFACE,
+        'Interface' => T_INTERFACE,
         'match' => null,
         'named_argument' => CT::T_NAMED_ARGUMENT_COLON,
         'namespace' => T_NAMESPACE,

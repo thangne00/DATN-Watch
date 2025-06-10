@@ -15,7 +15,7 @@
 namespace CKSource\CKFinder\Acl;
 
 /**
- * The Acl interface.
+ * The Acl Interface.
  */
 interface AclInterface
 {

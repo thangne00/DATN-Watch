@@ -14,7 +14,7 @@ namespace Symfony\Component\Console\Output;
 use Symfony\Component\Console\Formatter\OutputFormatterInterface;
 
 /**
- * OutputInterface is the interface implemented by all Output classes.
+ * OutputInterface is the Interface implemented by all Output classes.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */

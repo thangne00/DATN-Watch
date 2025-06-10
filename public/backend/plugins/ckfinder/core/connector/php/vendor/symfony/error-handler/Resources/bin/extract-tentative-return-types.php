@@ -51,7 +51,7 @@ while (false !== $file = fgets(\STDIN)) {
         continue;
     }
 
-    $code = preg_split('{^\s*(?:(?:abstract )?class|interface|trait) ([^\s]++)}m', $code, -1, \PREG_SPLIT_DELIM_CAPTURE);
+    $code = preg_split('{^\s*(?:(?:abstract )?class|Interface|trait) ([^\s]++)}m', $code, -1, \PREG_SPLIT_DELIM_CAPTURE);
 
     if (1 === count($code)) {
         continue;

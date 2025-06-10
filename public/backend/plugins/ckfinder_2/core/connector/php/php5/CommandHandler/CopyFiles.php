@@ -223,7 +223,7 @@ class CKFinder_Connector_CommandHandler_CopyFiles extends CKFinder_Connector_Com
 
         /**
          * Note: actually we could have more than one error.
-         * This is just a flag for CKFinder interface telling it to check all errors.
+         * This is just a flag for CKFinder Interface telling it to check all errors.
          */
         if ($errorCode != CKFINDER_CONNECTOR_ERROR_NONE) {
             $this->_errorHandler->throwError(CKFINDER_CONNECTOR_ERROR_COPY_FAILED);

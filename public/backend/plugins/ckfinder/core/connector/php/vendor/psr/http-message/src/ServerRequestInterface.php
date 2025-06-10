@@ -5,7 +5,7 @@ namespace Psr\Http\Message;
 /**
  * Representation of an incoming, server-side HTTP request.
  *
- * Per the HTTP specification, this interface includes properties for
+ * Per the HTTP specification, this Interface includes properties for
  * each of the following:
  *
  * - Protocol version
@@ -30,7 +30,7 @@ namespace Psr\Http\Message;
  * during the application (e.g., body parameters may be deserialized based on
  * content type).
  *
- * Additionally, this interface recognizes the utility of introspecting a
+ * Additionally, this Interface recognizes the utility of introspecting a
  * request to derive and match additional parameters (e.g., via URI path
  * matching, decrypting cookie values, deserializing non-form-encoded body
  * content, matching authorization headers to users, etc). These parameters

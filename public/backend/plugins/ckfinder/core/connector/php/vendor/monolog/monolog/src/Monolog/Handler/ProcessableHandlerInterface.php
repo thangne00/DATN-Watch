@@ -16,7 +16,7 @@ use Monolog\Processor\ProcessorInterface;
 /**
  * Interface to describe loggers that have processors
  *
- * This interface is present in monolog 1.x to ease forward compatibility.
+ * This Interface is present in monolog 1.x to ease forward compatibility.
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
  */

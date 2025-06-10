@@ -4,7 +4,7 @@ namespace Psr\Http\Message;
 
 /**
  * HTTP messages consist of requests from a client to a server and responses
- * from a server to a client. This interface defines the methods common to
+ * from a server to a client. This Interface defines the methods common to
  * each.
  *
  * Messages are considered immutable; all methods that might change state MUST

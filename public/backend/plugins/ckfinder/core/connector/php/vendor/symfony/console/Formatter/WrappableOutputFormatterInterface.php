@@ -12,7 +12,7 @@
 namespace Symfony\Component\Console\Formatter;
 
 /**
- * Formatter interface for console output that supports word wrapping.
+ * Formatter Interface for console output that supports word wrapping.
  *
  * @author Roland Franssen <franssen.roland@gmail.com>
  */

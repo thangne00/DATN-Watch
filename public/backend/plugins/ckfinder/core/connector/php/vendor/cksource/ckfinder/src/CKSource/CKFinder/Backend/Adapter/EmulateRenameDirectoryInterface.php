@@ -15,9 +15,9 @@
 namespace CKSource\CKFinder\Backend\Adapter;
 
 /**
- * The RenameDirectoryInterface interface.
+ * The RenameDirectoryInterface Interface.
  *
- * An interface implemented by adapters that do not support renaming folders, and emulate this operation.
+ * An Interface implemented by adapters that do not support renaming folders, and emulate this operation.
  */
 interface EmulateRenameDirectoryInterface
 {

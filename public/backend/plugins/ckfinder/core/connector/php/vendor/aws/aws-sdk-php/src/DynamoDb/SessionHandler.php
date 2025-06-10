@@ -2,7 +2,7 @@
 namespace Aws\DynamoDb;
 
 /**
- * Provides an interface for using Amazon DynamoDB as a session store by hooking
+ * Provides an Interface for using Amazon DynamoDB as a session store by hooking
  * into PHP's session handler hooks. Once registered, You may use the native
  * `$_SESSION` superglobal and session functions, and the sessions will be
  * stored automatically in DynamoDB. DynamoDB is a great session storage
@@ -203,7 +203,7 @@ class SessionHandler implements \SessionHandlerInterface
     }
 
     /**
-     * Satisfies the session handler interface, but does nothing. To do garbage
+     * Satisfies the session handler Interface, but does nothing. To do garbage
      * collection, you must manually call the garbageCollect() method.
      *
      * @param int $maxLifetime Ignored.

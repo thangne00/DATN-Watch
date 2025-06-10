@@ -2,7 +2,7 @@
 namespace Aws\Credentials;
 
 /**
- * Basic implementation of the AWS Credentials interface that allows callers to
+ * Basic implementation of the AWS Credentials Interface that allows callers to
  * pass in the AWS Access Key and AWS Secret Access Key in the constructor.
  */
 class Credentials implements CredentialsInterface, \Serializable
@@ -104,8 +104,8 @@ class Credentials implements CredentialsInterface, \Serializable
         $this->expires = time() + $extension * 60;
 
         $message = <<<EOT
-Attempting credential expiration extension due to a credential service 
-availability issue. A refresh of these credentials will be attempted again 
+Attempting credential expiration extension due to a credential service
+availability issue. A refresh of these credentials will be attempted again
 after {$extension} minutes.\n
 EOT;
         error_log($message);

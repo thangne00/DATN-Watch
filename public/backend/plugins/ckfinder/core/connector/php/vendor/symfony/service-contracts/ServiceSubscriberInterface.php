@@ -21,7 +21,7 @@ namespace Symfony\Contracts\Service;
  * The injected service locators SHOULD NOT allow access to any other services not specified by the method.
  *
  * It is expected that ServiceSubscriber instances consume PSR-11-based service locators internally.
- * This interface does not dictate any injection method for these service locators, although constructor
+ * This Interface does not dictate any injection method for these service locators, although constructor
  * injection is recommended.
  *
  * @author Nicolas Grekas <p@tchwork.com>

@@ -7,7 +7,7 @@ namespace League\Flysystem;
 use DateTimeInterface;
 
 /**
- * This interface contains everything to read from and inspect
+ * This Interface contains everything to read from and inspect
  * a filesystem. All methods containing are non-destructive.
  *
  * @method string publicUrl(string $path, array $config = []) Will be added in 4.0

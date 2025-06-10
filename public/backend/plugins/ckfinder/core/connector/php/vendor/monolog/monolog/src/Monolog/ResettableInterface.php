@@ -12,7 +12,7 @@
 namespace Monolog;
 
 /**
- * Handler or Processor implementing this interface will be reset when Logger::reset() is called.
+ * Handler or Processor implementing this Interface will be reset when Logger::reset() is called.
  *
  * Resetting ends a log cycle gets them back to their initial state.
  *

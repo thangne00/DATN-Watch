@@ -57,7 +57,7 @@ abstract class AbstractFunctionReferenceFixer extends AbstractFixer
             $this->functionsAnalyzer = new FunctionsAnalyzer();
         }
 
-        // make interface consistent with findSequence
+        // make Interface consistent with findSequence
         $end ??= $tokens->count();
 
         // find raw sequence which we can analyse for context

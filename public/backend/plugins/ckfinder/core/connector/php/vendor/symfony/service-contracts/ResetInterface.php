@@ -22,7 +22,7 @@ namespace Symfony\Contracts\Service;
  * This method could be called, for example, to recycle objects that are used as
  * services, so that they can be used to handle several requests in the same
  * process loop (note that we advise making your services stateless instead of
- * implementing this interface when possible.)
+ * implementing this Interface when possible.)
  */
 interface ResetInterface
 {

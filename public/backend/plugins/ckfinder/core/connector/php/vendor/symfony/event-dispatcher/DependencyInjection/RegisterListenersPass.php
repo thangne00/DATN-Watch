@@ -122,7 +122,7 @@ class RegisterListenersPass implements CompilerPassInterface
                 throw new InvalidArgumentException(sprintf('Class "%s" used for service "%s" cannot be found.', $class, $id));
             }
             if (!$r->isSubclassOf(EventSubscriberInterface::class)) {
-                throw new InvalidArgumentException(sprintf('Service "%s" must implement interface "%s".', $id, EventSubscriberInterface::class));
+                throw new InvalidArgumentException(sprintf('Service "%s" must implement Interface "%s".', $id, EventSubscriberInterface::class));
             }
             $class = $r->name;
 

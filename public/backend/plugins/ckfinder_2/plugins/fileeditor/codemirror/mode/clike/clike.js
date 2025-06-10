@@ -422,13 +422,13 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
     name: "clike",
     keywords: words("abstract assert break case catch class const continue default " +
                     "do else enum extends final finally float for goto if implements import " +
-                    "instanceof interface native new package private protected public " +
+                    "instanceof Interface native new package private protected public " +
                     "return static strictfp super switch synchronized this throw throws transient " +
                     "try volatile while"),
     types: words("byte short int long float double boolean char void Boolean Byte Character Double Float " +
                  "Integer Long Number Object Short String StringBuffer StringBuilder Void"),
     blockKeywords: words("catch class do else finally for if switch try while"),
-    defKeywords: words("class interface package enum"),
+    defKeywords: words("class Interface package enum"),
     typeFirstDefinitions: true,
     atoms: words("true false null"),
     endStatement: /^[;:]$/,
@@ -445,7 +445,7 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
     name: "clike",
     keywords: words("abstract as async await base break case catch checked class const continue" +
                     " default delegate do else enum event explicit extern finally fixed for" +
-                    " foreach goto if implicit in interface internal is lock namespace new" +
+                    " foreach goto if implicit in Interface internal is lock namespace new" +
                     " operator out override params private protected public readonly ref return sealed" +
                     " sizeof stackalloc static struct switch this throw try typeof unchecked" +
                     " unsafe using virtual void volatile while add alias ascending descending dynamic from get" +
@@ -455,7 +455,7 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
                  " UInt64 bool byte char decimal double short int long object"  +
                  " sbyte float string ushort uint ulong"),
     blockKeywords: words("catch class do else finally for foreach if struct switch try while"),
-    defKeywords: words("class interface namespace struct var"),
+    defKeywords: words("class Interface namespace struct var"),
     typeFirstDefinitions: true,
     atoms: words("true false null"),
     hooks: {
@@ -556,7 +556,7 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
     name: "clike",
     keywords: words(
       /*keywords*/
-      "package as typealias class interface this super val " +
+      "package as typealias class Interface this super val " +
       "var fun for is in This throw return " +
       "break continue object if else while do try when !in !is as? " +
 
@@ -577,7 +577,7 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
     indentStatements: false,
     multiLineStrings: true,
     blockKeywords: words("catch class do else finally for if where try while enum"),
-    defKeywords: words("class val var object package interface fun"),
+    defKeywords: words("class val var object package Interface fun"),
     atoms: words("true false null this"),
     hooks: {
       '"': function(stream, state) {
@@ -650,7 +650,7 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
   def("text/x-nesc", {
     name: "clike",
     keywords: words(cKeywords + "as atomic async call command component components configuration event generic " +
-                    "implementation includes interface module new norace nx_struct nx_union post provides " +
+                    "implementation includes Interface module new norace nx_struct nx_union post provides " +
                     "signal task uses abstract extends"),
     types: words(cTypes),
     blockKeywords: words("case do else for if switch while struct"),
@@ -719,7 +719,7 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
   def("text/x-ceylon", {
     name: "clike",
     keywords: words("abstracts alias assembly assert assign break case catch class continue dynamic else" +
-                    " exists extends finally for function given if import in interface is let module new" +
+                    " exists extends finally for function given if import in Interface is let module new" +
                     " nonempty object of out outer package return satisfies super switch then this throw" +
                     " try value void while"),
     types: function(word) {
@@ -727,8 +727,8 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
         var first = word.charAt(0);
         return (first === first.toUpperCase() && first !== first.toLowerCase());
     },
-    blockKeywords: words("case catch class dynamic else finally for function if interface module new object switch try while"),
-    defKeywords: words("class dynamic function interface module object package value"),
+    blockKeywords: words("case catch class dynamic else finally for function if Interface module new object switch try while"),
+    defKeywords: words("class dynamic function Interface module object package value"),
     builtin: words("abstract actual aliased annotation by default deprecated doc final formal late license" +
                    " native optional sealed see serializable shared suppressWarnings tagged throws variable"),
     isPunctuationChar: /[\[\]{}\(\),;\:\.`]/,

@@ -76,7 +76,7 @@ final class ClassAttributesSeparationFixer extends AbstractFixer implements Conf
     public function getDefinition(): FixerDefinitionInterface
     {
         return new FixerDefinition(
-            'Class, trait and interface elements must be separated with one or none blank line.',
+            'Class, trait and Interface elements must be separated with one or none blank line.',
             [
                 new CodeSample(
                     '<?php
@@ -248,10 +248,10 @@ class Sample
     }
 
     /**
-     * Fix spacing above an element of a class, interface or trait.
+     * Fix spacing above an element of a class, Interface or trait.
      *
      * Deals with comments, PHPDocs and spaces above the element with respect to the position of the
-     * element within the class, interface or trait.
+     * element within the class, Interface or trait.
      */
     private function fixSpaceAboveClassElement(Tokens $tokens, array $class, int $elementIndex): void
     {
@@ -543,7 +543,7 @@ class Sample
             if (!$tokens[$elementEndIndex]->equals(';')) {
                 $elementEndIndex = $tokens->findBlockEnd(Tokens::BLOCK_TYPE_CURLY_BRACE, $tokens->getNextTokenOfKind($element['index'], ['{']));
             }
-        } else { // 'const', 'property', enum-'case', or 'method' of an interface
+        } else { // 'const', 'property', enum-'case', or 'method' of an Interface
             $elementEndIndex = $tokens->getNextTokenOfKind($element['index'], [';']);
         }
 

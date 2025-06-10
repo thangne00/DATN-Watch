@@ -74,21 +74,21 @@ final class OrderedInterfacesFixer extends AbstractFixer implements Configurable
     public function getDefinition(): FixerDefinitionInterface
     {
         return new FixerDefinition(
-            'Orders the interfaces in an `implements` or `interface extends` clause.',
+            'Orders the interfaces in an `implements` or `Interface extends` clause.',
             [
                 new CodeSample(
-                    "<?php\n\nfinal class ExampleA implements Gamma, Alpha, Beta {}\n\ninterface ExampleB extends Gamma, Alpha, Beta {}\n"
+                    "<?php\n\nfinal class ExampleA implements Gamma, Alpha, Beta {}\n\nInterface ExampleB extends Gamma, Alpha, Beta {}\n"
                 ),
                 new CodeSample(
-                    "<?php\n\nfinal class ExampleA implements Gamma, Alpha, Beta {}\n\ninterface ExampleB extends Gamma, Alpha, Beta {}\n",
+                    "<?php\n\nfinal class ExampleA implements Gamma, Alpha, Beta {}\n\nInterface ExampleB extends Gamma, Alpha, Beta {}\n",
                     [self::OPTION_DIRECTION => self::DIRECTION_DESCEND]
                 ),
                 new CodeSample(
-                    "<?php\n\nfinal class ExampleA implements MuchLonger, Short, Longer {}\n\ninterface ExampleB extends MuchLonger, Short, Longer {}\n",
+                    "<?php\n\nfinal class ExampleA implements MuchLonger, Short, Longer {}\n\nInterface ExampleB extends MuchLonger, Short, Longer {}\n",
                     [self::OPTION_ORDER => self::ORDER_LENGTH]
                 ),
                 new CodeSample(
-                    "<?php\n\nfinal class ExampleA implements MuchLonger, Short, Longer {}\n\ninterface ExampleB extends MuchLonger, Short, Longer {}\n",
+                    "<?php\n\nfinal class ExampleA implements MuchLonger, Short, Longer {}\n\nInterface ExampleB extends MuchLonger, Short, Longer {}\n",
                     [
                         self::OPTION_ORDER => self::ORDER_LENGTH,
                         self::OPTION_DIRECTION => self::DIRECTION_DESCEND,
@@ -96,7 +96,7 @@ final class OrderedInterfacesFixer extends AbstractFixer implements Configurable
                 ),
             ],
             null,
-            "Risky for `implements` when specifying both an interface and its parent interface, because PHP doesn't break on `parent, child` but does on `child, parent`."
+            "Risky for `implements` when specifying both an Interface and its parent Interface, because PHP doesn't break on `parent, child` but does on `child, parent`."
         );
     }
 
