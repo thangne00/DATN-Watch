@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\Backend\User\AuthController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Backend\Product\ProductController;
+use App\Http\Controllers\Backend\Product\ProductCatalogueController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,18 +20,30 @@ Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
 Route::post('login', [AuthController::class, 'login'])->name('auth.login');
 
 Route::group(['middleware' => ['admin', 'locale', 'backend_default_locale']], function () {
-    Route::get('dashboard/index', [DashboardController::class, 'index'])->name('dashboard.index');
+//    Route::get('dashboard/index', [DashboardController::class, 'index'])->name('dashboard.index');
+
+    Route::group(['prefix' => 'product/catalogue'], function () {
+        Route::get('index', [ProductCatalogueController::class, 'index'])->name('product.catalogue.index');
+        Route::get('create', [ProductCatalogueController::class, 'create'])->name('product.catalogue.create');
+        Route::post('store', [ProductCatalogueController::class, 'store'])->name('product.catalogue.store');
+        Route::get('{id}/edit', [ProductCatalogueController::class, 'edit'])->where(['id' => '[0-9]+'])->name('product.catalogue.edit');
+        Route::post('{id}/update', [ProductCatalogueController::class, 'update'])->where(['id' => '[0-9]+'])->name('product.catalogue.update');
+        Route::get('{id}/delete', [ProductCatalogueController::class, 'delete'])->where(['id' => '[0-9]+'])->name('product.catalogue.delete');
+        Route::delete('{id}/destroy', [ProductCatalogueController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('product.catalogue.destroy');
+    });
+
+     Route::group(['prefix' => 'product'], function () {
+      Route::get('index', [ProductController::class, 'index'])->name('product.index');
+      Route::get('create', [ProductController::class, 'create'])->name('product.create');
+      Route::post('store', [ProductController::class, 'store'])->name('product.store');
+      Route::get('{id}/edit', [ProductController::class, 'edit'])->where(['id' => '[0-9]+'])->name('product.edit');
+      Route::post('{id}/update', [ProductController::class, 'update'])->where(['id' => '[0-9]+'])->name('product.update');
+      Route::get('{id}/delete', [ProductController::class, 'delete'])->where(['id' => '[0-9]+'])->name('product.delete');
+      Route::delete('{id}/destroy', [ProductController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('product.destroy');
+   });
 });
 
-Route::group(['prefix' => 'product/catalogue'], function () {
-    Route::get('index', [ProductCatalogueController::class, 'index'])->name('product.catalogue.index');
-    Route::get('create', [ProductCatalogueController::class, 'create'])->name('product.catalogue.create');
-    Route::post('store', [ProductCatalogueController::class, 'store'])->name('product.catalogue.store');
-    Route::get('{id}/edit', [ProductCatalogueController::class, 'edit'])->where(['id' => '[0-9]+'])->name('product.catalogue.edit');
-    Route::post('{id}/update', [ProductCatalogueController::class, 'update'])->where(['id' => '[0-9]+'])->name('product.catalogue.update');
-    Route::get('{id}/delete', [ProductCatalogueController::class, 'delete'])->where(['id' => '[0-9]+'])->name('product.catalogue.delete');
-    Route::delete('{id}/destroy', [ProductCatalogueController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('product.catalogue.destroy');
-});
+
 
 Route::get('/', function () {
     return view('welcome');
