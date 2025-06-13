@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\Product\ProductController;
 use App\Http\Controllers\Backend\Product\ProductCatalogueController;
 use App\Http\Controllers\Backend\Attribute\AttributeCatalogueController;
+use App\Http\Controllers\Backend\Attribute\AttributeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,10 +54,14 @@ Route::group(['middleware' => ['admin', 'locale', 'backend_default_locale']], fu
         Route::delete('{id}/destroy', [AttributeCatalogueController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('attribute.catalogue.destroy');
     });
 
-     Route::group(['prefix' => 'attribute'], function () {
+    Route::group(['prefix' => 'attribute'], function () {
       Route::get('index', [AttributeController::class, 'index'])->name('attribute.index');
       Route::get('create', [AttributeController::class, 'create'])->name('attribute.create');
       Route::post('store', [AttributeController::class, 'store'])->name('attribute.store');
+      Route::get('{id}/edit', [AttributeController::class, 'edit'])->where(['id' => '[0-9]+'])->name('attribute.edit');
+      Route::post('{id}/update', [AttributeController::class, 'update'])->where(['id' => '[0-9]+'])->name('attribute.update');
+      Route::get('{id}/delete', [AttributeController::class, 'delete'])->where(['id' => '[0-9]+'])->name('attribute.delete');
+      Route::delete('{id}/destroy', [AttributeController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('attribute.destroy');
    });
 });
 
