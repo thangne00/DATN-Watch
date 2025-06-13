@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\User\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\Product\ProductController;
 use App\Http\Controllers\Backend\Product\ProductCatalogueController;
+use App\Http\Controllers\Backend\Attribute\AttributeCatalogueController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,10 +42,22 @@ Route::group(['middleware' => ['admin', 'locale', 'backend_default_locale']], fu
       Route::get('{id}/delete', [ProductController::class, 'delete'])->where(['id' => '[0-9]+'])->name('product.delete');
       Route::delete('{id}/destroy', [ProductController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('product.destroy');
    });
+
+    Route::group(['prefix' => 'attribute/catalogue'], function () {
+        Route::get('index', [AttributeCatalogueController::class, 'index'])->name('attribute.catalogue.index');
+        Route::get('create', [AttributeCatalogueController::class, 'create'])->name('attribute.catalogue.create');
+        Route::post('store', [AttributeCatalogueController::class, 'store'])->name('attribute.catalogue.store');
+        Route::get('{id}/edit', [AttributeCatalogueController::class, 'edit'])->where(['id' => '[0-9]+'])->name('attribute.catalogue.edit');
+        Route::post('{id}/update', [AttributeCatalogueController::class, 'update'])->where(['id' => '[0-9]+'])->name('attribute.catalogue.update');
+        Route::get('{id}/delete', [AttributeCatalogueController::class, 'delete'])->where(['id' => '[0-9]+'])->name('attribute.catalogue.delete');
+        Route::delete('{id}/destroy', [AttributeCatalogueController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('attribute.catalogue.destroy');
+    });
+
+     Route::group(['prefix' => 'attribute'], function () {
+      Route::get('index', [AttributeController::class, 'index'])->name('attribute.index');
+      Route::get('create', [AttributeController::class, 'create'])->name('attribute.create');
+      Route::post('store', [AttributeController::class, 'store'])->name('attribute.store');
+   });
 });
 
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
