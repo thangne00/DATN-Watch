@@ -90,7 +90,21 @@ class PromotionService extends BaseService implements PromotionServiceInterface
         }
     }
 
-   
+    public function update($id, $request, $languageId){
+        DB::beginTransaction();
+        try{
+            $payload = $this->request($request);
+            $promotion = $this->promotionRepository->update($id, $payload);
+            $this->handleRelation($request, $promotion, 'update');
+            DB::commit();
+            return true;
+        }catch(\Exception $e ){
+            DB::rollBack();
+            // Log::error($e->getMessage());
+            echo $e->getMessage();die();
+            return false;
+        }
+    }
     
     private function handleRelation($request, $promotion, $method = 'create'){
         if($request->input('method') === PromotionEnum::PRODUCT_AND_QUANTITY){
@@ -144,6 +158,23 @@ class PromotionService extends BaseService implements PromotionServiceInterface
         return $data;
     }
 
+
+    
+
+    public function destroy($id){
+        DB::beginTransaction();
+        try{
+            $promotion = $this->promotionRepository->delete($id);
+
+            DB::commit();
+            return true;
+        }catch(\Exception $e ){
+            DB::rollBack();
+            // Log::error($e->getMessage());
+            echo $e->getMessage();die();
+            return false;
+        }
+    }
 
     public function saveTranslate($request, $languageId){
         DB::beginTransaction();

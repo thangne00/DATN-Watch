@@ -70,6 +70,10 @@ Route::group(['middleware' => ['admin', 'locale', 'backend_default_locale']], fu
       Route::get('index', [PromotionController::class, 'index'])->name('promotion.index');
       Route::get('create', [PromotionController::class, 'create'])->name('promotion.create');
       Route::post('store', [PromotionController::class, 'store'])->name('promotion.store');
+      Route::get('{id}/edit', [PromotionController::class, 'edit'])->where(['id' => '[0-9]+'])->name('promotion.edit');
+      Route::post('{id}/update', [PromotionController::class, 'update'])->where(['id' => '[0-9]+'])->name('promotion.update');
+      Route::get('{id}/delete', [PromotionController::class, 'delete'])->where(['id' => '[0-9]+'])->name('promotion.delete');
+      Route::delete('{id}/destroy', [PromotionController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('promotion.destroy');
    });
 });
 
