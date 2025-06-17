@@ -87,7 +87,81 @@ class PromotionController extends Controller
         return redirect()->route('promotion.index')->with('error','Thêm mới bản ghi không thành công. Hãy thử lại');
     }
 
+    
 
+    public function edit($id){
+        $this->authorize('modules', 'promotion.update');
+        $promotion = $this->promotionRepository->findById($id);
+        $sources = $this->sourceRepository->all();
+        // dd($promotion->discountInformation);
+        $config = $this->config();
+        $config['seo'] = __('messages.promotion');
+        $config['method'] = 'edit';
+        $template = 'backend.promotion.promotion.store';
+        return view('backend.dashboard.layout', compact(
+            'template',
+            'config',
+            'promotion',
+            'sources',
+        ));
+    }
+
+    public function update($id, UpdatePromotionRequest $request){
+        if($this->promotionService->update($id, $request, $this->language)){
+            return redirect()->route('promotion.index')->with('success','Cập nhật bản ghi thành công');
+        }
+        return redirect()->route('promotion.index')->with('error','Cập nhật bản ghi không thành công. Hãy thử lại');
+    }
+
+    public function delete($id){
+        $this->authorize('modules', 'promotion.destroy');
+        $config['seo'] = __('messages.promotion');
+        $promotion = $this->promotionRepository->findById($id);
+        $template = 'backend.promotion.promotion.delete';
+        return view('backend.dashboard.layout', compact(
+            'template',
+            'promotion',
+            'config',
+        ));
+    }
+
+    public function destroy($id){
+        if($this->promotionService->destroy($id)){
+            return redirect()->route('promotion.index')->with('success','Xóa bản ghi thành công');
+        }
+        return redirect()->route('promotion.index')->with('error','Xóa bản ghi không thành công. Hãy thử lại');
+    }
+
+    public function translate($languageId, $promotionId){
+        $this->authorize('modules', 'promotion.translate');
+        $promotion = $this->promotionRepository->findById($promotionId);
+        $promotion->jsonDescription = $promotion->description;
+        $promotion->description = $promotion->description[$this->language];
+
+        $promotionTranslate = new \stdClass;
+        $promotionTranslate->description = ($promotion->jsonDescription[$languageId]) ?? '';
+
+
+        $translate = $this->languageRepository->findById($languageId);
+        $config = $this->config();
+        $config['seo'] = __('messages.promotion');
+        $config['method'] = 'create';
+        $template = 'backend.promotion.promotion.translate';
+        return view('backend.dashboard.layout', compact(
+            'template',
+            'config',
+            'translate',
+            'promotion',
+            'promotionTranslate',
+        ));
+    }
+
+    public function saveTranslate(Request $request){
+        if($this->promotionService->saveTranslate($request, $this->language)){
+            return redirect()->route('promotion.index')->with('success','Tạo bản dịch thành công');
+        }
+        return redirect()->route('promotion.index')->with('error','Tạo bản dịch không thành công. Hãy thử lại');
+    }
 
     private function config(){
         return [
