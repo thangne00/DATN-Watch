@@ -119,6 +119,32 @@ class ProductController extends FrontendController
         ));
     }
 
+     public function search(Request $request){
+
+        $products = $this->productRepository->search($request->input('keyword'), $this->language);
+
+        $productId = $products->pluck('id')->toArray();
+        if(count($productId) && !is_null($productId)){
+            $products = $this->productService->combineProductAndPromotion($productId, $products);
+        }
+
+        $config = $this->config();
+        $system = $this->system;
+        $seo = [
+            'meta_title' => 'Tìm kiếm cho từ khóa: '.$request->input('keyword'),
+            'meta_keyword' => '',
+            'meta_description' => '',
+            'meta_image' => '',
+            'canonical' => write_url('tim-kiem')
+        ];
+        return view('frontend.product.catalogue.search', compact(
+            'config',
+            'seo',
+            'system',
+            'products',
+        ));
+    }
+
     private function config(){
         return [
             'language' => $this->language,
