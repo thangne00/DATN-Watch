@@ -8,6 +8,8 @@ use App\Http\Controllers\Backend\Attribute\AttributeCatalogueController;
 use App\Http\Controllers\Backend\Attribute\AttributeController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Backend\Promotion\PromotionController;
+use App\Http\Controllers\Frontend\ProductCatalogueController as FeProductCatalogueController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -85,4 +87,6 @@ Route::get('ajax/dashboard/getMenu', [AjaxDashboardController::class, 'getMenu']
    
 Route::get('ajax/dashboard/findPromotionObject', [AjaxDashboardController::class, 'findPromotionObject'])->name('ajax.dashboard.findPromotionObject');
 Route::get('ajax/dashboard/getPromotionConditionValue', [AjaxDashboardController::class, 'getPromotionConditionValue'])->name('ajax.dashboard.getPromotionConditionValue');
+
+Route::get('tim-kiem'.config('apps.general.suffix'), [FeProductCatalogueController::class, 'search'])->name('product.catalogue.search');
 
