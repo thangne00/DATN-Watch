@@ -9,7 +9,7 @@ use App\Http\Controllers\Backend\Attribute\AttributeController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Backend\Promotion\PromotionController;
 use App\Http\Controllers\Frontend\ProductCatalogueController as FeProductCatalogueController;
-
+use App\Http\Controllers\Backend\Post\PostCatalogueController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -76,6 +76,12 @@ Route::group(['middleware' => ['admin', 'locale', 'backend_default_locale']], fu
       Route::post('{id}/update', [PromotionController::class, 'update'])->where(['id' => '[0-9]+'])->name('promotion.update');
       Route::get('{id}/delete', [PromotionController::class, 'delete'])->where(['id' => '[0-9]+'])->name('promotion.delete');
       Route::delete('{id}/destroy', [PromotionController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('promotion.destroy');
+   });
+
+   Route::group(['prefix' => 'post/catalogue'], function () {
+      Route::get('index', [PostCatalogueController::class, 'index'])->name('post.catalogue.index');
+      Route::get('create', [PostCatalogueController::class, 'create'])->name('post.catalogue.create');
+      Route::post('store', [PostCatalogueController::class, 'store'])->name('post.catalogue.store');
    });
 });
 
