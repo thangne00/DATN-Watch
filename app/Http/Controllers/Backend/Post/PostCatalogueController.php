@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 use App\Services\Interfaces\PostCatalogueServiceInterface  as PostCatalogueService;
 use App\Repositories\Interfaces\PostCatalogueRepositoryInterface  as PostCatalogueRepository;
+use App\Http\Requests\Post\StorePostCatalogueRequest;
+use App\Http\Requests\Post\UpdatePostCatalogueRequest;
+use App\Http\Requests\Post\DeletePostCatalogueRequest;
 use App\Classes\Nestedsetbie;
 use Auth;
 use App\Models\Language;
@@ -81,7 +84,7 @@ class PostCatalogueController extends Controller
         ));
     }
 
-    public function store(Request $request){
+    public function store(StorePostCatalogueRequest $request){
         if($this->postCatalogueService->create($request, $this->language)){
             return redirect()->route('post.catalogue.index')->with('success','Thêm mới bản ghi thành công');
         }
@@ -104,7 +107,7 @@ class PostCatalogueController extends Controller
         ));
     }
 
-    public function update($id, Request $request){
+    public function update($id, UpdatePostCatalogueRequest $request){
         if($this->postCatalogueService->update($id, $request, $this->language)){
             return redirect()->route('post.catalogue.index')->with('success','Cập nhật bản ghi thành công');
         }
@@ -123,7 +126,7 @@ class PostCatalogueController extends Controller
         ));
     }
 
-    public function destroy(Request $request, $id){
+    public function destroy(DeletePostCatalogueRequest $request, $id){
         if($this->postCatalogueService->destroy($id, $this->language)){
             return redirect()->route('post.catalogue.index')->with('success','Xóa bản ghi thành công');
         }
