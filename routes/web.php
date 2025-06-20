@@ -78,10 +78,14 @@ Route::group(['middleware' => ['admin', 'locale', 'backend_default_locale']], fu
       Route::delete('{id}/destroy', [PromotionController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('promotion.destroy');
    });
 
-   Route::group(['prefix' => 'post/catalogue'], function () {
+    Route::group(['prefix' => 'post/catalogue'], function () {
       Route::get('index', [PostCatalogueController::class, 'index'])->name('post.catalogue.index');
       Route::get('create', [PostCatalogueController::class, 'create'])->name('post.catalogue.create');
       Route::post('store', [PostCatalogueController::class, 'store'])->name('post.catalogue.store');
+      Route::get('{id}/edit', [PostCatalogueController::class, 'edit'])->where(['id' => '[0-9]+'])->name('post.catalogue.edit');
+      Route::post('{id}/update', [PostCatalogueController::class, 'update'])->where(['id' => '[0-9]+'])->name('post.catalogue.update');
+      Route::get('{id}/delete', [PostCatalogueController::class, 'delete'])->where(['id' => '[0-9]+'])->name('post.catalogue.delete');
+      Route::delete('{id}/destroy', [PostCatalogueController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('post.catalogue.destroy');
    });
 });
 

@@ -7,9 +7,6 @@ use Illuminate\Http\Request;
 
 use App\Services\Interfaces\PostCatalogueServiceInterface  as PostCatalogueService;
 use App\Repositories\Interfaces\PostCatalogueRepositoryInterface  as PostCatalogueRepository;
-use App\Http\Requests\Post\StorePostCatalogueRequest;
-use App\Http\Requests\Post\UpdatePostCatalogueRequest;
-use App\Http\Requests\Post\DeletePostCatalogueRequest;
 use App\Classes\Nestedsetbie;
 use Auth;
 use App\Models\Language;
@@ -84,11 +81,53 @@ class PostCatalogueController extends Controller
         ));
     }
 
-    public function store(StorePostCatalogueRequest $request){
+    public function store(Request $request){
         if($this->postCatalogueService->create($request, $this->language)){
             return redirect()->route('post.catalogue.index')->with('success','Thêm mới bản ghi thành công');
         }
         return redirect()->route('post.catalogue.index')->with('error','Thêm mới bản ghi không thành công. Hãy thử lại');
+    }
+
+    public function edit($id){
+        $this->authorize('modules', 'post.catalogue.update');
+        $postCatalogue = $this->postCatalogueRepository->getPostCatalogueById($id, $this->language);
+        $config = $this->configData();
+        $config['seo'] = __('messages.postCatalogue');
+        $config['method'] = 'edit';
+        $dropdown  = $this->nestedset->Dropdown();
+        $template = 'backend.post.catalogue.store';
+        return view('backend.dashboard.layout', compact(
+            'template',
+            'config',
+            'dropdown',
+            'postCatalogue',
+        ));
+    }
+
+    public function update($id, Request $request){
+        if($this->postCatalogueService->update($id, $request, $this->language)){
+            return redirect()->route('post.catalogue.index')->with('success','Cập nhật bản ghi thành công');
+        }
+        return redirect()->route('post.catalogue.index')->with('error','Cập nhật bản ghi không thành công. Hãy thử lại');
+    }
+
+    public function delete($id){
+        $this->authorize('modules', 'post.catalogue.destroy');
+        $config['seo'] = __('messages.postCatalogue');
+        $postCatalogue = $this->postCatalogueRepository->getPostCatalogueById($id, $this->language);
+        $template = 'backend.post.catalogue.delete';
+        return view('backend.dashboard.layout', compact(
+            'template',
+            'postCatalogue',
+            'config',
+        ));
+    }
+
+    public function destroy(Request $request, $id){
+        if($this->postCatalogueService->destroy($id, $this->language)){
+            return redirect()->route('post.catalogue.index')->with('success','Xóa bản ghi thành công');
+        }
+        return redirect()->route('post.catalogue.index')->with('error','Xóa bản ghi không thành công. Hãy thử lại');
     }
 
     private function configData(){
