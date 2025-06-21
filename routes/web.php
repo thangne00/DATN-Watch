@@ -111,3 +111,4 @@ Route::get('ajax/dashboard/getPromotionConditionValue', [AjaxDashboardController
 
 Route::get('tim-kiem'.config('apps.general.suffix'), [FeProductCatalogueController::class, 'search'])->name('product.catalogue.search');
 Route::get('danh-sach-yeu-thich'.config('apps.general.suffix'), [FeProductCatalogueController::class, 'wishlist'])->name('product.catalogue.wishlist');
+
