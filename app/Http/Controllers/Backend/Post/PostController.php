@@ -89,6 +89,50 @@ class PostController extends Controller
         return redirect()->route('post.index')->with('error','Thêm mới bản ghi không thành công. Hãy thử lại');
     }
 
+    public function edit($id){
+        $this->authorize('modules', 'post.update');
+        $post = $this->postRepository->getPostById($id, $this->language);
+        $config = $this->configData();
+        $config['seo'] = __('messages.post');
+        $config['method'] = 'edit';
+        $dropdown  = $this->nestedset->Dropdown();
+        $album = json_decode($post->album);
+        $template = 'backend.post.post.store';
+        return view('backend.dashboard.layout', compact(
+            'template',
+            'config',
+            'dropdown',
+            'post',
+            'album',
+        ));
+    }
+
+    public function update($id, Request $request){
+        if($this->postService->update($id, $request, $this->language)){
+            return redirect()->route('post.index')->with('success','Cập nhật bản ghi thành công');
+        }
+        return redirect()->route('post.index')->with('error','Cập nhật bản ghi không thành công. Hãy thử lại');
+    }
+
+    public function delete($id){
+        $this->authorize('modules', 'post.destroy');
+        $config['seo'] = __('messages.post');
+        $post = $this->postRepository->getPostById($id, $this->language);
+        $template = 'backend.post.post.delete';
+        return view('backend.dashboard.layout', compact(
+            'template',
+            'post',
+            'config',
+        ));
+    }
+
+    public function destroy($id){
+        if($this->postService->destroy($id)){
+            return redirect()->route('post.index')->with('success','Xóa bản ghi thành công');
+        }
+        return redirect()->route('post.index')->with('error','Xóa bản ghi không thành công. Hãy thử lại');
+    }
+
     private function configData(){
         return [
             'js' => [
@@ -104,4 +148,5 @@ class PostController extends Controller
           
         ];
     }
+
 }
