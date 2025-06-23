@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\Promotion\PromotionController;
 use App\Http\Controllers\Frontend\ProductCatalogueController as FeProductCatalogueController;
 use App\Http\Controllers\Backend\Post\PostCatalogueController;
 use App\Http\Controllers\Backend\Post\PostController;
+use App\Http\Controllers\Frontend\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -111,3 +112,6 @@ Route::get('ajax/dashboard/getPromotionConditionValue', [AjaxDashboardController
 
 Route::get('tim-kiem'.config('apps.general.suffix'), [FeProductCatalogueController::class, 'search'])->name('product.catalogue.search');
 
+Route::get('thanh-toan'.config('apps.general.suffix'), [CartController::class, 'checkout'])->name('cart.checkout');
+Route::post('cart/create', [CartController::class, 'store'])->name('cart.store');
+Route::get('cart/{code}/success'.config('apps.general.suffix'), [CartController::class, 'success'])->name('cart.success')->where(['code' => '[0-9]+']);
