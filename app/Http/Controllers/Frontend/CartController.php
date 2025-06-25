@@ -8,6 +8,7 @@ use App\Services\CartService;
 use App\Repositories\Interfaces\ProvinceRepositoryInterface  as ProvinceRepository;
 use App\Repositories\Interfaces\PromotionRepositoryInterface  as PromotionRepository;
 use App\Repositories\Interfaces\OrderRepositoryInterface  as OrderRepository;
+use App\Http\Requests\StoreCartRequest;
 use Cart;
 use App\Classes\Vnpay;
 
@@ -74,7 +75,7 @@ class CartController extends FrontendController
         
     }
 
-    public function store(Request $request){
+    public function store(StoreCartRequest $request){
         $system = $this->system;
         $order = $this->cartService->order($request, $system);
         if($order['flag']){
