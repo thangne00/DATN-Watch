@@ -1,25 +1,27 @@
 @extends('frontend.homepage.layout')
 @section('content')
 <div class="cart-container">
-    <div class="page-breadcrumb background">
+    <div class="page-breadcrumb background">      
         <div class="uk-container uk-container-center">
             <ul class="uk-list uk-clearfix">
                 <li><a href="/"><i class="fi-rs-home mr5"></i>Trang chủ</a></li>
-                <li><a href="" title="Hệ thống phân phối">Thanh toán</a></li>
+                <li><a href="http://127.0.0.1:8000/thanh-toan.html" title="Hệ thống phân phối">Thanh toán</a></li>
             </ul>
         </div>
     </div>
     <div class="uk-container uk-container-center">
 
-
+        @if ($errors->any())
         <div class="uk-alert uk-alert-danger">
                 <ul>
-                   <li></li>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
                 </ul>
             </div>
-
-        <form action="" class="uk-form form" method="post">
-
+        @endif
+        <form action="{{ route('cart.store') }}" class="uk-form form" method="post">
+            @csrf
             <h2 class="heading-1"><span>Thông tin đặt hàng</span></h2>
             <div class="cart-wrapper">
                 <div class="uk-grid uk-grid-medium">
@@ -55,4 +57,8 @@
     </div>
 </div>
 @endsection
-
+<script>
+    var province_id = '{{ (isset($order->province_id)) ? $order->province_id : old('province_id') }}'
+    var district_id = '{{ (isset($order->district_id)) ? $order->district_id : old('district_id') }}'
+    var ward_id = '{{ (isset($order->ward_id)) ? $order->ward_id : old('ward_id') }}'
+</script>
