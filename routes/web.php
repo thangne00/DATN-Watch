@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\Post\PostCatalogueController;
 use App\Http\Controllers\Backend\Post\PostController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\Payment\VnpayController;
+use App\Http\Controllers\Backend\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -99,6 +100,10 @@ Route::group(['middleware' => ['admin', 'locale', 'backend_default_locale']], fu
       Route::post('{id}/update', [PostController::class, 'update'])->where(['id' => '[0-9]+'])->name('post.update');
       Route::get('{id}/delete', [PostController::class, 'delete'])->where(['id' => '[0-9]+'])->name('post.delete');
       Route::delete('{id}/destroy', [PostController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('post.destroy');
+   });
+
+    Route::group(['prefix' => 'order'], function () {
+      Route::get('index', [OrderController::class, 'index'])->name('order.index');
    });
 });
 
