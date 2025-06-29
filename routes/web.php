@@ -15,6 +15,7 @@ use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\Payment\VnpayController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\SlideController;
+use App\Http\Controllers\Backend\ReviewController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -116,6 +117,12 @@ Route::group(['middleware' => ['admin', 'locale', 'backend_default_locale']], fu
       Route::post('{id}/update', [SlideController::class, 'update'])->where(['id' => '[0-9]+'])->name('slide.update');
       Route::get('{id}/delete', [SlideController::class, 'delete'])->where(['id' => '[0-9]+'])->name('slide.delete');
       Route::delete('{id}/destroy', [SlideController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('slide.destroy');
+   });
+
+   Route::group(['prefix' => 'review'], function () {
+      Route::get('index', [ReviewController::class, 'index'])->name('review.index');
+      Route::get('{id}/delete', [ReviewController::class, 'delete'])->where(['id' => '[0-9]+'])->name('review.delete');
+      
    });
 });
 
