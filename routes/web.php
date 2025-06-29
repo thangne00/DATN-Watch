@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\Post\PostController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\Payment\VnpayController;
 use App\Http\Controllers\Backend\OrderController;
+use App\Http\Controllers\Backend\SlideController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -105,6 +106,12 @@ Route::group(['middleware' => ['admin', 'locale', 'backend_default_locale']], fu
     Route::group(['prefix' => 'order'], function () {
       Route::get('index', [OrderController::class, 'index'])->name('order.index');
       Route::get('{id}/detail', [OrderController::class, 'detail'])->where(['id' => '[0-9]+'])->name('order.detail');
+   });
+
+     Route::group(['prefix' => 'slide'], function () {
+      Route::get('index', [SlideController::class, 'index'])->name('slide.index');
+      Route::get('create', [SlideController::class, 'create'])->name('slide.create');
+      Route::post('store', [SlideController::class, 'store'])->name('slide.store');
    });
 });
 
