@@ -61,7 +61,25 @@ class SlideService extends BaseService implements SlideServiceInterface
     }
 
 
-   
+    public function update($id, $request, $languageId){
+        DB::beginTransaction();
+        try{
+            $slide = $this->slideRepository->findById($id);
+            $slideItem = $slide->item;
+            unset($slideItem[$languageId]);
+            $payload = $request->only(['_token', 'name', 'keyword', 'setting', 'short_code']);
+            $payload['item'] = $this->handleSlideItem($request, $languageId) + $slideItem;
+            $slide = $this->slideRepository->update($id, $payload);
+            DB::commit();
+            return true;
+        }catch(\Exception $e ){
+            DB::rollBack();
+            // Log::error($e->getMessage());
+            echo $e->getMessage();die();
+            return false;
+        }
+    }
+
     public function destroy($id){
         DB::beginTransaction();
         try{

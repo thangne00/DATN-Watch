@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Services\Interfaces\SlideServiceInterface  as SlideService;
 use App\Repositories\Interfaces\SlideRepositoryInterface as SlideRepository;
 use App\Models\Language;
+use App\Http\Requests\Slide\StoreSlideRequest;
+use App\Http\Requests\Slide\UpdateSlideRequest;
 
 class SlideController extends Controller
 {
@@ -68,13 +70,37 @@ class SlideController extends Controller
         ));
     }
 
-    public function store(Request $request){
+    public function store(StoreSlideRequest $request){
         if($this->slideService->create($request, $this->language)){
             return redirect()->route('slide.index')->with('success','Thêm mới bản ghi thành công');
         }
         return redirect()->route('slide.index')->with('error','Thêm mới bản ghi không thành công. Hãy thử lại');
     }
 
+    public function edit($id){
+        $this->authorize('modules', 'slide.edit');
+        $slide = $this->slideRepository->findById($id);
+        $slideItem = $this->slideService->converSlideArray($slide->item[$this->language]);
+
+
+        $config = $this->config();
+        $config['seo'] = __('messages.slide');
+        $config['method'] = 'edit';
+        $template = 'backend.slide.store';
+        return view('backend.dashboard.layout', compact(
+            'template',
+            'config',
+            'slide',
+            'slideItem',
+        ));
+    }
+
+    public function update($id, UpdateSlideRequest $request){
+        if($this->slideService->update($id, $request, $this->language)){
+            return redirect()->route('slide.index')->with('success','Cập nhật bản ghi thành công');
+        }
+        return redirect()->route('slide.index')->with('error','Cập nhật bản ghi không thành công. Hãy thử lại');
+    }
 
     public function delete($id){
         $this->authorize('modules', 'slide.destroy');
