@@ -112,6 +112,10 @@ Route::group(['middleware' => ['admin', 'locale', 'backend_default_locale']], fu
       Route::get('index', [SlideController::class, 'index'])->name('slide.index');
       Route::get('create', [SlideController::class, 'create'])->name('slide.create');
       Route::post('store', [SlideController::class, 'store'])->name('slide.store');
+      Route::get('{id}/edit', [SlideController::class, 'edit'])->where(['id' => '[0-9]+'])->name('slide.edit');
+      Route::post('{id}/update', [SlideController::class, 'update'])->where(['id' => '[0-9]+'])->name('slide.update');
+      Route::get('{id}/delete', [SlideController::class, 'delete'])->where(['id' => '[0-9]+'])->name('slide.delete');
+      Route::delete('{id}/destroy', [SlideController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('slide.destroy');
    });
 });
 
