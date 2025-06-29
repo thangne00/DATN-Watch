@@ -17,6 +17,8 @@ use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\SlideController;
 use App\Http\Controllers\Backend\ReviewController;
 use App\Http\Controllers\Ajax\ReviewController as AjaxReviewController;
+use App\Http\Controllers\Ajax\CartController as AjaxCartController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -149,3 +151,7 @@ Route::get('return/vnpay_ipn'.config('apps.general.suffix'), [VnpayController::c
 
 
 Route::post('ajax/review/create', [AjaxReviewController::class, 'create'])->name('ajax.review.create');
+
+Route::post('ajax/cart/create', [AjaxCartController::class, 'create'])->name('ajax.cart.create');
+Route::post('ajax/cart/update', [AjaxCartController::class, 'update'])->name('ajax.cart.update');
+Route::post('ajax/cart/delete', [AjaxCartController::class, 'delete'])->name('ajax.cart.delete');
