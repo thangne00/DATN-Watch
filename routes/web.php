@@ -17,6 +17,8 @@ use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\SlideController;
 use App\Http\Controllers\Backend\ReviewController;
 use App\Http\Controllers\Ajax\ReviewController as AjaxReviewController;
+use App\Http\Controllers\Ajax\CartController as AjaxCartController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
