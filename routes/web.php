@@ -16,6 +16,7 @@ use App\Http\Controllers\Frontend\Payment\VnpayController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\SlideController;
 use App\Http\Controllers\Backend\ReviewController;
+use App\Http\Controllers\Ajax\ReviewController as AjaxReviewController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -145,3 +146,6 @@ Route::get('cart/{code}/success'.config('apps.general.suffix'), [CartController:
 /* VNPAY */
 Route::get('return/vnpay'.config('apps.general.suffix'), [VnpayController::class, 'vnpay_return'])->name('vnpay.momo_return');
 Route::get('return/vnpay_ipn'.config('apps.general.suffix'), [VnpayController::class, 'vnpay_ipn'])->name('vnpay.vnpay_ipn');
+
+
+Route::post('ajax/review/create', [AjaxReviewController::class, 'create'])->name('ajax.review.create');
