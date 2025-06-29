@@ -104,6 +104,7 @@ Route::group(['middleware' => ['admin', 'locale', 'backend_default_locale']], fu
 
     Route::group(['prefix' => 'order'], function () {
       Route::get('index', [OrderController::class, 'index'])->name('order.index');
+      Route::get('{id}/detail', [OrderController::class, 'detail'])->where(['id' => '[0-9]+'])->name('order.detail');
    });
 });
 
