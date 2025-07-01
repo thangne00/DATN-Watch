@@ -18,6 +18,8 @@ use App\Http\Controllers\Backend\SlideController;
 use App\Http\Controllers\Backend\ReviewController;
 use App\Http\Controllers\Ajax\ReviewController as AjaxReviewController;
 use App\Http\Controllers\Ajax\CartController as AjaxCartController;
+use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Ajax\DashboardController as AjaxDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +37,7 @@ Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
 Route::post('login', [AuthController::class, 'login'])->name('auth.login');
 
 Route::group(['middleware' => ['admin', 'locale', 'backend_default_locale']], function () {
-//    Route::get('dashboard/index', [DashboardController::class, 'index'])->name('dashboard.index');
+   Route::get('dashboard/index', [DashboardController::class, 'index'])->name('dashboard.index');
 
     Route::group(['prefix' => 'product/catalogue'], function () {
         Route::get('index', [ProductCatalogueController::class, 'index'])->name('product.catalogue.index');
