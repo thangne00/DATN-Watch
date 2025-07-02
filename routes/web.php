@@ -20,7 +20,7 @@ use App\Http\Controllers\Ajax\ReviewController as AjaxReviewController;
 use App\Http\Controllers\Ajax\CartController as AjaxCartController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Ajax\DashboardController as AjaxDashboardController;
-
+use App\Http\Controllers\Ajax\OrderController as AjaxOrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -157,3 +157,6 @@ Route::post('ajax/review/create', [AjaxReviewController::class, 'create'])->name
 Route::post('ajax/cart/create', [AjaxCartController::class, 'create'])->name('ajax.cart.create');
 Route::post('ajax/cart/update', [AjaxCartController::class, 'update'])->name('ajax.cart.update');
 Route::post('ajax/cart/delete', [AjaxCartController::class, 'delete'])->name('ajax.cart.delete');
+
+Route::post('ajax/order/update', [AjaxOrderController::class, 'update'])->name('ajax.order.update');
+Route::get('ajax/order/chart', [AjaxOrderController::class, 'chart'])->name('ajax.order.chart');
