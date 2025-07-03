@@ -2,7 +2,7 @@
     <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
             <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-            <form role="search" class="navbar-form-custom" action="">
+            <form role="search" class="navbar-form-custom" action="search_results.html">
                 <div class="form-group">
                     <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
                 </div>
@@ -11,7 +11,9 @@
         <ul class="nav navbar-top-links navbar-right">
             <li>
                 <div class="uk-flex uk-flex-middle">
-
+                    @foreach($languages as $key => $val)
+                    <a href="{{ route('language.switch', $val->id) }}" class="image img-cover language-item {{ ($val->current == 1) ? 'active' : '' }}"><img src="{{ image($val->image) }}" alt=""></a>
+                    @endforeach
                 </div>
             </li>
             <li class="dropdown">
@@ -21,7 +23,7 @@
                 <ul class="dropdown-menu dropdown-messages">
                     <li>
                         <div class="dropdown-messages-box">
-                            <a href="" class="pull-left">
+                            <a href="profile.html" class="pull-left">
                                 <img alt="image" class="img-circle" src="img/a7.jpg">
                             </a>
                             <div>
@@ -34,7 +36,7 @@
                     <li class="divider"></li>
                     <li>
                         <div class="dropdown-messages-box">
-                            <a href="" class="pull-left">
+                            <a href="profile.html" class="pull-left">
                                 <img alt="image" class="img-circle" src="img/a4.jpg">
                             </a>
                             <div>
@@ -47,7 +49,7 @@
                     <li class="divider"></li>
                     <li>
                         <div class="dropdown-messages-box">
-                            <a href="" class="pull-left">
+                            <a href="profile.html" class="pull-left">
                                 <img alt="image" class="img-circle" src="img/profile.jpg">
                             </a>
                             <div>
@@ -60,7 +62,7 @@
                     <li class="divider"></li>
                     <li>
                         <div class="text-center link-block">
-                            <a href="">
+                            <a href="mailbox.html">
                                 <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
                             </a>
                         </div>
@@ -73,7 +75,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-alerts">
                     <li>
-                        <a href="">
+                        <a href="mailbox.html">
                             <div>
                                 <i class="fa fa-envelope fa-fw"></i> You have 16 messages
                                 <span class="pull-right text-muted small">4 minutes ago</span>
@@ -82,7 +84,7 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="">
+                        <a href="profile.html">
                             <div>
                                 <i class="fa fa-twitter fa-fw"></i> 3 New Followers
                                 <span class="pull-right text-muted small">12 minutes ago</span>
@@ -91,7 +93,7 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="">
+                        <a href="grid_options.html">
                             <div>
                                 <i class="fa fa-upload fa-fw"></i> Server Rebooted
                                 <span class="pull-right text-muted small">4 minutes ago</span>
@@ -101,7 +103,7 @@
                     <li class="divider"></li>
                     <li>
                         <div class="text-center link-block">
-                            <a href="">
+                            <a href="notifications.html">
                                 <strong>See All Alerts</strong>
                                 <i class="fa fa-angle-right"></i>
                             </a>
@@ -110,8 +112,9 @@
                 </ul>
             </li>
 
+
             <li>
-                <a href="">
+                <a href="{{ route('auth.logout') }}">
                     <i class="fa fa-sign-out"></i> Log out
                 </a>
             </li>

@@ -13,6 +13,15 @@ use App\Http\Controllers\Backend\Post\PostCatalogueController;
 use App\Http\Controllers\Backend\Post\PostController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\Payment\VnpayController;
+use App\Http\Controllers\Backend\OrderController;
+use App\Http\Controllers\Backend\SlideController;
+use App\Http\Controllers\Backend\ReviewController;
+use App\Http\Controllers\Ajax\ReviewController as AjaxReviewController;
+use App\Http\Controllers\Ajax\CartController as AjaxCartController;
+use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Ajax\DashboardController as AjaxDashboardController;
+use App\Http\Controllers\Ajax\OrderController as AjaxOrderController;
+use App\Http\Controllers\Backend\User\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,7 +38,18 @@ Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
 Route::post('login', [AuthController::class, 'login'])->name('auth.login');
 
 Route::group(['middleware' => ['admin', 'locale', 'backend_default_locale']], function () {
-//    Route::get('dashboard/index', [DashboardController::class, 'index'])->name('dashboard.index');
+   Route::get('dashboard/index', [DashboardController::class, 'index'])->name('dashboard.index');
+
+    /* USER */
+   Route::group(['prefix' => 'user'], function () {
+      Route::get('index', [UserController::class, 'index'])->name('user.index');
+      Route::get('create', [UserController::class, 'create'])->name('user.create');
+      Route::post('store', [UserController::class, 'store'])->name('user.store');
+      Route::get('{id}/edit', [UserController::class, 'edit'])->where(['id' => '[0-9]+'])->name('user.edit');
+      Route::post('{id}/update', [UserController::class, 'update'])->where(['id' => '[0-9]+'])->name('user.update');
+      Route::get('{id}/delete', [UserController::class, 'delete'])->where(['id' => '[0-9]+'])->name('user.delete');
+      Route::delete('{id}/destroy', [UserController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('user.destroy');
+   });
 
     Route::group(['prefix' => 'product/catalogue'], function () {
         Route::get('index', [ProductCatalogueController::class, 'index'])->name('product.catalogue.index');
@@ -100,6 +120,27 @@ Route::group(['middleware' => ['admin', 'locale', 'backend_default_locale']], fu
       Route::get('{id}/delete', [PostController::class, 'delete'])->where(['id' => '[0-9]+'])->name('post.delete');
       Route::delete('{id}/destroy', [PostController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('post.destroy');
    });
+
+    Route::group(['prefix' => 'order'], function () {
+      Route::get('index', [OrderController::class, 'index'])->name('order.index');
+      Route::get('{id}/detail', [OrderController::class, 'detail'])->where(['id' => '[0-9]+'])->name('order.detail');
+   });
+
+     Route::group(['prefix' => 'slide'], function () {
+      Route::get('index', [SlideController::class, 'index'])->name('slide.index');
+      Route::get('create', [SlideController::class, 'create'])->name('slide.create');
+      Route::post('store', [SlideController::class, 'store'])->name('slide.store');
+      Route::get('{id}/edit', [SlideController::class, 'edit'])->where(['id' => '[0-9]+'])->name('slide.edit');
+      Route::post('{id}/update', [SlideController::class, 'update'])->where(['id' => '[0-9]+'])->name('slide.update');
+      Route::get('{id}/delete', [SlideController::class, 'delete'])->where(['id' => '[0-9]+'])->name('slide.delete');
+      Route::delete('{id}/destroy', [SlideController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('slide.destroy');
+   });
+
+   Route::group(['prefix' => 'review'], function () {
+      Route::get('index', [ReviewController::class, 'index'])->name('review.index');
+      Route::get('{id}/delete', [ReviewController::class, 'delete'])->where(['id' => '[0-9]+'])->name('review.delete');
+      
+   });
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
@@ -121,3 +162,13 @@ Route::get('cart/{code}/success'.config('apps.general.suffix'), [CartController:
 /* VNPAY */
 Route::get('return/vnpay'.config('apps.general.suffix'), [VnpayController::class, 'vnpay_return'])->name('vnpay.momo_return');
 Route::get('return/vnpay_ipn'.config('apps.general.suffix'), [VnpayController::class, 'vnpay_ipn'])->name('vnpay.vnpay_ipn');
+
+
+Route::post('ajax/review/create', [AjaxReviewController::class, 'create'])->name('ajax.review.create');
+
+Route::post('ajax/cart/create', [AjaxCartController::class, 'create'])->name('ajax.cart.create');
+Route::post('ajax/cart/update', [AjaxCartController::class, 'update'])->name('ajax.cart.update');
+Route::post('ajax/cart/delete', [AjaxCartController::class, 'delete'])->name('ajax.cart.delete');
+
+Route::post('ajax/order/update', [AjaxOrderController::class, 'update'])->name('ajax.order.update');
+Route::get('ajax/order/chart', [AjaxOrderController::class, 'chart'])->name('ajax.order.chart');
