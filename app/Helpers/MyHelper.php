@@ -14,24 +14,6 @@ if(!function_exists('convertRevenueChartData')){
 }
 
 
-if(!function_exists('growHtml')){
-    function growHtml($grow){
-        if($grow > 0){
-            return '<div class="stat-percent font-bold text-success">'.$grow.'% <i class="fa fa-level-up"></i></div>';
-        }else{
-            return '<div class="stat-percent font-bold text-danger">'.$grow.'% <i class="fa fa-level-down"></i></div>';
-        }
-    }
-}
-
-if(!function_exists('growth')){
-    function growth($currentValue, $previousValue){
-        $divison = ($previousValue == 0) ? 1 : $previousValue;
-        $grow =  ($currentValue - $previousValue) / $divison * 100;
-        return number_format($grow, 1);
-    }
-}
-
 if(!function_exists('pre')){
     function pre($data = ''){
         echo '<pre>';
@@ -75,7 +57,6 @@ if(!function_exists('getPromotionPrice')){
         return $priceMain - $discountValue;
     
     }
-}
 
 
 if(!function_exists('getPrice')){
@@ -159,132 +140,6 @@ if(!function_exists('getReview')){
     }
 }
 
-
-if(!function_exists('convert_array')){
-    function convert_array($system = null, $keyword = '', $value = ''){
-        $temp = [];
-        if(is_array($system)){
-            foreach($system as $key => $val){
-                $temp[$val[$keyword]] = $val[$value];
-            }
-        }
-        if(is_object($system)){
-            foreach($system as $key => $val){
-                $temp[$val->{$keyword}] = $val->{$value};
-            }
-        }
-
-        return $temp;
-    }
-}
-
-if(!function_exists('convertDateTime')){
-    function convertDateTime(string $date = '', string $format = 'd/m/Y H:i', string $inputDateFormat = 'Y-m-d H:i:s'){
-       $carbonDate = \Carbon\Carbon::createFromFormat($inputDateFormat, $date);
-
-       return $carbonDate->format($format);
-    }
-}
-
-if(!function_exists('renderDiscountInformation')){
-    function renderDiscountInformation($promotion = []){
-        if($promotion->method === 'product_and_quantity'){
-            $discountValue = $promotion->discountInformation['info']['discountValue'];
-            $discountType = ($promotion->discountInformation['info']['discountType'] == 'percent') ? '%' : 'đ';
-            return '<span class="label label-success">'.$discountValue.$discountType.' </span>';
-        }
-        return  '<div><a href="'.route('promotion.edit', $promotion->id).'">Xem chi tiết</a></div>';
-    }
-}
-
-if(!function_exists('renderSystemInput')){
-    function renderSystemInput(string $name = '', $systems = null){
-        return '<input 
-            type="text"
-            name="config['.$name.']"
-            value="'.old($name, ($systems[$name]) ?? '').'"
-            class="form-control"
-            placeholder=""
-            autocomplete="off"
-        >';
-    }
-}
-
-
-if(!function_exists('renderSystemImages')){
-    function renderSystemImages(string $name = '', $systems = null){
-        return '<input 
-            type="text"
-            name="config['.$name.']"
-            value="'.old($name, ($systems[$name]) ?? '').'"
-            class="form-control upload-image"
-            placeholder=""
-            autocomplete="off"
-        >';
-    }
-}
-
-
-if(!function_exists('renderSystemTextarea')){
-    function renderSystemTextarea(string $name = '', $systems = null){
-        return '<textarea name="config['.$name.']" class="form-control system-textarea">'.old($name, ($systems[$name]) ?? '').'</textarea>';
-    }
-}
-
-if(!function_exists('renderSystemEditor')){
-    function renderSystemEditor(string $name = '', $systems = null){
-        return '<textarea name="config['.$name.']" id="'.$name.'" class="form-control system-textarea ck-editor">'.old($name, ($systems[$name]) ?? '').'</textarea>';
-    }
-}
-
-if(!function_exists('renderSystemLink')){
-    function renderSystemLink(array $item = [], $systems = null){
-        return (isset($item['link'])) ? '<a class="system-link" target="'.$item['link']['target'].'" href="'.$item['link']['href'].'">'.$item['link']['text'].'</a>' : '';
-    }
-}
-
-if(!function_exists('renderSystemTitle')){
-    function renderSystemTitle(array $item = [], $systems = null){
-        return (isset($item['title'])) ? '<span class="system-link text-danger">'.$item['title'].'</span>' : '';
-    }
-}
-
-if(!function_exists('renderSystemSelect')){
-    function renderSystemSelect(array $item, string $name = '', $systems = null){
-       $html = '<select name="config['.$name.']" class="form-control">';
-            foreach($item['option'] as $key => $val){
-                $html .= '<option '.((isset($systems[$name]) && $key == $systems[$name]) ? 'selected' : '').' value="'.$key.'">'.$val.'</option>';
-            }
-       $html .= '</select>';
-
-       return $html;
-    }
-}
-
-if(!function_exists('write_url')){
-    function write_url($canonical = null, bool $fullDomain = true, $suffix = true){
-        $canonical = ($canonical) ?? '';
-        if(strpos($canonical, 'http') !== false){
-            return $canonical;
-        }
-        $fullUrl = (($fullDomain === true) ? config('app.url') : '').$canonical.( ($suffix === true) ? config('apps.general.suffix') : '' );
-        return $fullUrl;
-    }
-}
-
-if(!function_exists('seo')){
-    function seo($model = null, $page = 1){
-        $canonical = ($page > 1) ? write_url($model->canonical, true, false).'/trang-'.$page.config('apps.general.suffix'): write_url($model->canonical, true, true);
-        return [
-            'meta_title' => ($model->meta_title) ?? $model->name,
-            'meta_keyword' => ($model->meta_keyword) ?? '',
-            'meta_description' => ($model->meta_description) ?? cut_string_and_decode($model->descipriont, 168),
-            'meta_image' => $model->image,
-            'canonical' => $canonical,
-        ];
-    }
-}
-
 if(!function_exists('recursive')){
     function recursive($data, $parentId = 0){
         $temp = [];
@@ -302,119 +157,8 @@ if(!function_exists('recursive')){
     }
 }
 
-if(!function_exists('frontend_recursive_menu')){
-    function frontend_recursive_menu(array $data = [], int $parentId = 0, int $count = 1, $type = 'html'){
-        $html = '';
-        if(isset($data) && !is_null($data) && count($data)){
-            if($type == 'html'){
-                foreach($data as $key => $val){
-                    $name = $val['item']->languages->first()->pivot->name;
-                    $canonical = write_url($val['item']->languages->first()->pivot->canonical, true, true);
-                    $ulClass = ($count >= 1) ? 'menu-level__'.($count + 1) : '';
-                    $html .= '<li class="'.(($count == 1 && count($val['children'])) ? 'children' : '').'">';
-                        $html .= '<a href="'.(($name == 'Trang chủ') ? '.' : $canonical).'" title="'.$name.'">'.$name.'</a>';
-                        if(count($val['children'])){
-                            $html .= '<div class="dropdown-menu">';
-                                $html .= '<ul class="uk-list uk-clearfix menu-style '.$ulClass.'">';
-                                    $html .= frontend_recursive_menu($val['children'], $val['item']->parent_id,  $count + 1, $type);
-                                $html .= '</ul>';
-                            $html .='</div>';
-                        }
-                    $html .= '</li>';
-                }
-                return $html;
-            } 
-        }
-        return $data;
-       
-    }
-}
 
 
-if(!function_exists('recursive_menu')){
-    function recursive_menu($data){
-        $html = '';
-        if(count($data)){
-            foreach($data as $key => $val){
-                $itemId = $val['item']->id;
-                $itemName = $val['item']->languages->first()->pivot->name;
-                $itemUrl = route('menu.children', ['id' => $itemId]);
-
-
-                $html .= "<li class='dd-item' data-id='$itemId'>" ;
-                    $html .= "<div class='dd-handle'>";
-                        $html .= "<span class='label label-info'><i class='fa fa-arrows'></i></span> $itemName";
-                    $html .= "</div>";
-                    $html .= "<a class='create-children-menu' href='$itemUrl'> Quản lý menu con </a>";
-
-                    if(count($val['children'])){
-                        $html .= "<ol class='dd-list'>";
-                            $html .= recursive_menu($val['children']);
-                        $html .= '</ol>';
-                    }
-                $html .= "</li>";
-            }
-        }
-        return $html;
-    }
-}
-
-
-if(!function_exists('buildMenu')){
-    function buildMenu($menus = null, $parent_id = 0, $prefix = ''){
-        $output = [];
-        $count = 1;
-
-        if(count($menus)){
-            foreach($menus as $key => $val){
-                if($val->parent_id == $parent_id){
-                    $val->position = $prefix.$count;
-                    $output[] = $val;
-                    $output = array_merge($output, buildMenu($menus, $val->id, $val->position . '.'));
-                    $count++;
-                }
-            }
-        }
-        return $output;
-    }
-}
-
-if(!function_exists('loadClass')){
-    function loadClass(string $model = '', $folder = 'Repositories', $interface = 'Repository'){
-        $serviceInterfaceNamespace = '\App\\'.$folder.'\\' . ucfirst($model) . $interface;
-        if (class_exists($serviceInterfaceNamespace)) {
-            $serviceInstance = app($serviceInterfaceNamespace);
-        }
-        return $serviceInstance;
-    }
-}
-
-if(!function_exists('convertArrayByKey')){
-    function convertArrayByKey($object = null, $fields = []){
-        $temp = [];
-        foreach($object as $key => $val){
-            foreach($fields as $field){
-                if(is_array($object)){
-                    $temp[$field][] = $val[$field];
-                }else{
-                    $extract = explode('.', $field);
-                    if(count($extract) == 2){
-                        if($extract[1] == 'languages'){
-                            $temp[$extract[0]][] = $val->{$extract[1]}->first()->pivot->{$extract[0]};
-                        }else{
-                            $temp[$extract[0]][] = $val->pivot->{$extract[0]};
-                        }
-                        
-                    }else{
-                        $temp[$field][] = $val->{$field}; 
-                    }
-                    
-                }
-            }
-        }
-        return $temp;
-    }
-}
 
 if(!function_exists('renderQuickBuy')){
     function renderQuickBuy($product, string $canonical = '', string $name = ''){
@@ -445,23 +189,8 @@ if(!function_exists('renderQuickBuy')){
     }
 }
 
-if(!function_exists('cutnchar')){
-	function cutnchar($str = NULL, $n = 320){
-		if(strlen($str) < $n) return $str;
-		$html = substr($str, 0, $n);
-		$html = substr($html, 0, strrpos($html,' '));
-		return $html.'...';
-	}
 }
 
-if(!function_exists('cut_string_and_decode')){
-	function cut_string_and_decode($str = NULL, $n = 200){
-        $str = html_entity_decode($str);
-        $str = strip_tags($str);
-        $str = cutnchar($str, $n);
-        return $str;
-	}
-}
 
 if(!function_exists('categorySelectRaw')){
     function categorySelectRaw($table = 'products'){
@@ -493,7 +222,6 @@ if(!function_exists('sortString')){
     }
 }
 
-
 if(!function_exists('sortAttributeId')){
     function sortAttributeId(array $attributeId = []){
         sort($attributeId, SORT_NUMERIC);
@@ -517,25 +245,6 @@ if(!function_exists('vnpayConfig')){
 }
 
 
-if(!function_exists('momoConfig')){
-    function momoConfig(){
-        return [
-            'partnerCode' => 'MOMOBKUN20180529',
-            'accessKey' => 'klm05TvNBzhg7h7j',
-            'secretKey' => 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa',
-        ];
-    }
-}
-
-if(!function_exists('zaloConfig')){
-    function zaloConfig(){
-        return [
-            'appid' => '553',
-            'key1' => '9phuAOYhan4urywHTh0ndEXiV3pKHr5Q',
-            'key2' => 'Iyz2habzyr7AG8SgvoBCbKwKi3UzlLi3',
-        ];
-    }
-}
 
 if(!function_exists('execPostRequest')){
     function execPostRequest($url, $data){
@@ -608,16 +317,3 @@ if(!function_exists('convertArray')){
     }
 }
 
-if(!function_exists('convertToIdNameArray')){
-    function convertToIdNameArray($customers)
-   {
-    $idNameArray = [];
-
-    foreach ($customers as $customer) {
-        $idNameArray[$customer['id']] = $customer['name'];
-    }
-
-    return $idNameArray;
-    }
-
-}
