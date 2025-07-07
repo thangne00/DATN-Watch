@@ -22,6 +22,7 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Ajax\DashboardController as AjaxDashboardController;
 use App\Http\Controllers\Ajax\OrderController as AjaxOrderController;
 use App\Http\Controllers\Backend\User\UserController;
+use App\Http\Controllers\Backend\ReportController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -140,6 +141,10 @@ Route::group(['middleware' => ['admin', 'locale', 'backend_default_locale']], fu
       Route::get('index', [ReviewController::class, 'index'])->name('review.index');
       Route::get('{id}/delete', [ReviewController::class, 'delete'])->where(['id' => '[0-9]+'])->name('review.delete');
       
+   });
+
+    Route::group(['prefix' => 'report'], function () {
+      Route::get('time', [ReportController::class, 'time'])->name('report.time');
    });
 });
 
