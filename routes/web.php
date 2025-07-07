@@ -23,6 +23,7 @@ use App\Http\Controllers\Ajax\DashboardController as AjaxDashboardController;
 use App\Http\Controllers\Ajax\OrderController as AjaxOrderController;
 use App\Http\Controllers\Backend\User\UserController;
 use App\Http\Controllers\Backend\ReportController;
+use App\Http\Controllers\Backend\Customer\CustomerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,6 +51,16 @@ Route::group(['middleware' => ['admin', 'locale', 'backend_default_locale']], fu
       Route::post('{id}/update', [UserController::class, 'update'])->where(['id' => '[0-9]+'])->name('user.update');
       Route::get('{id}/delete', [UserController::class, 'delete'])->where(['id' => '[0-9]+'])->name('user.delete');
       Route::delete('{id}/destroy', [UserController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('user.destroy');
+   });
+
+    Route::group(['prefix' => 'customer'], function () {
+      Route::get('index', [CustomerController::class, 'index'])->name('customer.index');
+      Route::get('create', [CustomerController::class, 'create'])->name('customer.create');
+      Route::post('store', [CustomerController::class, 'store'])->name('customer.store');
+      Route::get('{id}/edit', [CustomerController::class, 'edit'])->where(['id' => '[0-9]+'])->name('customer.edit');
+      Route::post('{id}/update', [CustomerController::class, 'update'])->where(['id' => '[0-9]+'])->name('customer.update');
+      Route::get('{id}/delete', [CustomerController::class, 'delete'])->where(['id' => '[0-9]+'])->name('customer.delete');
+      Route::delete('{id}/destroy', [CustomerController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('customer.destroy');
    });
 
     Route::group(['prefix' => 'product/catalogue'], function () {
