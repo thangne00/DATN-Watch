@@ -5,17 +5,17 @@
         </h2>
         {{-- <span class="has-account">Bạn đã có tài khoản? <a href="" title="Đăng nhập ngay">Đăng nhập ngay</a></span> --}}
     </div>
-    
+
 </div>
 <div class="panel-body mb30">
     <div class="cart-information">
         <div class="uk-grid uk-grid-medium mb20">
             <div class="uk-width-large-1-2">
                 <div class="form-row">
-                    <input 
+                    <input
                         type="text"
                         name="fullname"
-                        value="{{ old('fullname') }}"
+                        value="{{ old('name', $customer->name ?? '') }}"
                         placeholder="Nhập vào Họ Tên"
                         class="input-text"
                     >
@@ -23,34 +23,27 @@
             </div>
             <div class="uk-width-large-1-2">
                 <div class="form-row">
-                    <input 
+                    <input
                         type="text"
                         name="phone"
-                        value="{{ old('phone') }}"
+                        value="{{ old('phone', $customer->phone ?? '') }}"
                         placeholder="Nhập vào Số điện thoại"
                         class="input-text"
                     >
                 </div>
             </div>
         </div>
-        {{-- <div class="form-row mb20">
-            <input 
+        <div class="form-row mb20">
+            <input
                 type="text"
                 name="email"
-                value="{{ old('email') }}"
+                value="{{ old('email', $customer->email ?? '') }}"
                 placeholder="Nhập vào Email"
                 class="input-text"
             >
-        </div> --}}
-        <div class="form-row mb20">
-            <input 
-                type="text"
-                name="address"
-                value="{{ old('address') }}"
-                placeholder="Nhập vào địa chỉ: ví dụ đường Lạc Long Quân..."
-                class="input-text"
-            >
         </div>
+
+
         <div class="uk-grid uk-grid-medium mb20">
             <div class="uk-width-large-1-3">
                 <select name="province_id" id="" class="province location setupSelect2" data-target="districts">
@@ -71,8 +64,17 @@
                 </select>
             </div>
         </div>
+        <div class="form-row mb20">
+            <input
+                type="text"
+                name="address"
+                value="{{ old('address', $customer->address ?? '') }}"
+                placeholder="Nhập vào địa chỉ: ví dụ đường Lạc Long Quân..."
+                class="input-text"
+            >
+        </div>
         <div class="form-row">
-            <input 
+            <input
                 type="text"
                 name="description"
                 value="{{ old('description') }}"
