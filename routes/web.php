@@ -24,6 +24,7 @@ use App\Http\Controllers\Ajax\OrderController as AjaxOrderController;
 use App\Http\Controllers\Backend\User\UserController;
 use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\Customer\CustomerController;
+use App\Http\Controllers\Frontend\AgencyAuthController as FeAgencyAuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +39,16 @@ use App\Http\Controllers\Backend\Customer\CustomerController;
 Route::get('admin', [AuthController::class, 'index'])->name('auth.admin')->middleware('login');
 Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
 Route::post('login', [AuthController::class, 'login'])->name('auth.login');
+
+
+/* AGENCY  */
+Route::get('agency/login' . config('apps.general.suffix'), [FeAgencyAuthController::class, 'indexAgency'])->name('fe.auth.agency.login');
+Route::get('agency/check/login' . config('apps.general.suffix'), [FeAgencyAuthController::class, 'login'])->name('fe.auth.agency.dologin');
+Route::get('agency/password/forgot' . config('apps.general.suffix'), [FeAgencyAuthController::class, 'forgotAgencyPassword'])->name('forgot.agency.password');
+Route::get('agency/password/email' . config('apps.general.suffix'), [FeAgencyAuthController::class, 'verifyAgencyEmail'])->name('agency.password.email');
+Route::get('agency/password/update' . config('apps.general.suffix'), [FeAgencyAuthController::class, 'updatePassword'])->name('agency.update.password');
+Route::post('agency/password/change' . config('apps.general.suffix'), [FeAgencyAuthController::class, 'changePassword'])->name('agency.password.reset');
+
 
 Route::group(['middleware' => ['admin', 'locale', 'backend_default_locale']], function () {
    Route::get('dashboard/index', [DashboardController::class, 'index'])->name('dashboard.index');
