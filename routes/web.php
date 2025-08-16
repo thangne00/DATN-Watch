@@ -25,6 +25,7 @@ use App\Http\Controllers\Backend\User\UserController;
 use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\Customer\CustomerController;
 use App\Http\Controllers\Frontend\AgencyAuthController as FeAgencyAuthController;
+use App\Http\Controllers\Frontend\CustomerController as FeCustomerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,6 +50,25 @@ Route::get('agency/password/email' . config('apps.general.suffix'), [FeAgencyAut
 Route::get('agency/password/update' . config('apps.general.suffix'), [FeAgencyAuthController::class, 'updatePassword'])->name('agency.update.password');
 Route::post('agency/password/change' . config('apps.general.suffix'), [FeAgencyAuthController::class, 'changePassword'])->name('agency.password.reset');
 
+
+Route::group(['middleware' => ['customer']], function () {
+    Route::get('customer/profile' . config('apps.general.suffix'), [FeCustomerController::class, 'profile'])->name('customer.profile');
+    Route::post('customer/profile/update' . config('apps.general.suffix'), [FeCustomerController::class, 'updateProfile'])->name('customer.profile.update');
+    Route::get('customer/password/reset' . config('apps.general.suffix'), [FeCustomerController::class, 'passwordForgot'])->name('customer.password.change');
+    Route::post('customer/password/recovery' . config('apps.general.suffix'), [FeCustomerController::class, 'recovery'])->name('customer.password.recovery');
+    Route::get('customer/logout' . config('apps.general.suffix'), [FeCustomerController::class, 'logout'])->name('customer.logout');
+    Route::get('customer/construction' . config('apps.general.suffix'), [FeCustomerController::class, 'construction'])->name('customer.construction');
+    Route::get('customer/construction/{id}/product' . config('apps.general.suffix'), [FeCustomerController::class, 'constructionProduct'])->name('customer.construction.product')->where(['id' => '[0-9]+']);
+    Route::get('customer/warranty/check' . config('apps.general.suffix'), [FeCustomerController::class, 'warranty'])->name('customer.check.warranty');
+    Route::post('customer/warranty/active', [FeCustomerController::class, 'active'])->name('customer.active.warranty');
+
+    Route::get('customer/order' . config('apps.general.suffix'), [FeCustomerController::class, 'order'])->name('customer.order');
+    Route::get('customer/order/{code}' . config('apps.general.suffix'), [FeCustomerController::class, 'orderDetail'])->name('customer.order.detail');
+    Route::post('customer/order/{code}/cancel', [FeCustomerController::class, 'cancelOrder'])->name('customer.order.cancel');
+
+//    Route::post('customer/order/{code}/cancel', [CustomerController::class, 'cancelOrder'])->name('customer.order.cancel');?
+
+});
 
 Route::group(['middleware' => ['admin', 'locale', 'backend_default_locale']], function () {
    Route::get('dashboard/index', [DashboardController::class, 'index'])->name('dashboard.index');

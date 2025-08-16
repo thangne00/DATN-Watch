@@ -3,7 +3,7 @@
         <div class="cart-summary-item">
             <div class="uk-flex uk-flex-middle uk-flex-space-between">
                 <span class="summay-title">Giảm giá</span>
-                <div class="summary-value discount-value">1000đ</div>
+                <div class="summary-value discount-value">-{{ convert_price($cartPromotion['discount'], true) }}đ</div>
             </div>
         </div>
         <div class="cart-summary-item">
@@ -15,11 +15,11 @@
         <div class="cart-summary-item">
             <div class="uk-flex uk-flex-middle uk-flex-space-between">
                 <span class="summay-title bold">Tổng tiền</span>
-                <div class="summary-value cart-total">10000đ</div>
+                <div class="summary-value cart-total">{{ (count($carts) && !is_null($carts) ) ? convert_price($cartCaculate['cartTotal'] - $cartPromotion['discount'], true) : 0   }}đ</div>
             </div>
         </div>
         <div class="buy-more">
-            <a href="" class="btn-buymore">Chọn thêm sản phẩm khác</a>
+            <a href="{{ write_url('thuong-hieu') }}" class="btn-buymore">Chọn thêm sản phẩm khác</a>
         </div>
     </div>
 </div>
