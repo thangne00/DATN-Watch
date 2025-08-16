@@ -3,7 +3,7 @@
     <div class="cart-success">
         <div class="panel-head">
             <h2 class="cart-heading"><span>Đặt hàng thành công</span></h2>
-            <div class="discover-text"><a href="{{ write_url('san-pham') }}">Khám phá thêm các sản phẩm khác tại đây</a></div>
+            <div class="discover-text"><a href="{{ write_url('thuong-hieu') }}">Khám phá thêm các sản phẩm khác tại đây</a></div>
         </div>
         <div class="panel-body">
             <h2 class="cart-heading"><span>Thông tin đơn hàng</span></h2>

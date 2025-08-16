@@ -15,6 +15,17 @@ use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\Payment\VnpayController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\SlideController;
+use App\Http\Controllers\Backend\ReviewController;
+use App\Http\Controllers\Ajax\ReviewController as AjaxReviewController;
+use App\Http\Controllers\Ajax\CartController as AjaxCartController;
+use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Ajax\DashboardController as AjaxDashboardController;
+use App\Http\Controllers\Ajax\OrderController as AjaxOrderController;
+use App\Http\Controllers\Backend\User\UserController;
+use App\Http\Controllers\Backend\ReportController;
+use App\Http\Controllers\Backend\Customer\CustomerController;
+use App\Http\Controllers\Frontend\AgencyAuthController as FeAgencyAuthController;
+use App\Http\Controllers\Frontend\CustomerController as FeCustomerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,8 +41,58 @@ Route::get('admin', [AuthController::class, 'index'])->name('auth.admin')->middl
 Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
 Route::post('login', [AuthController::class, 'login'])->name('auth.login');
 
+
+/* AGENCY  */
+Route::get('agency/login' . config('apps.general.suffix'), [FeAgencyAuthController::class, 'indexAgency'])->name('fe.auth.agency.login');
+Route::get('agency/check/login' . config('apps.general.suffix'), [FeAgencyAuthController::class, 'login'])->name('fe.auth.agency.dologin');
+Route::get('agency/password/forgot' . config('apps.general.suffix'), [FeAgencyAuthController::class, 'forgotAgencyPassword'])->name('forgot.agency.password');
+Route::get('agency/password/email' . config('apps.general.suffix'), [FeAgencyAuthController::class, 'verifyAgencyEmail'])->name('agency.password.email');
+Route::get('agency/password/update' . config('apps.general.suffix'), [FeAgencyAuthController::class, 'updatePassword'])->name('agency.update.password');
+Route::post('agency/password/change' . config('apps.general.suffix'), [FeAgencyAuthController::class, 'changePassword'])->name('agency.password.reset');
+
+
+Route::group(['middleware' => ['customer']], function () {
+    Route::get('customer/profile' . config('apps.general.suffix'), [FeCustomerController::class, 'profile'])->name('customer.profile');
+    Route::post('customer/profile/update' . config('apps.general.suffix'), [FeCustomerController::class, 'updateProfile'])->name('customer.profile.update');
+    Route::get('customer/password/reset' . config('apps.general.suffix'), [FeCustomerController::class, 'passwordForgot'])->name('customer.password.change');
+    Route::post('customer/password/recovery' . config('apps.general.suffix'), [FeCustomerController::class, 'recovery'])->name('customer.password.recovery');
+    Route::get('customer/logout' . config('apps.general.suffix'), [FeCustomerController::class, 'logout'])->name('customer.logout');
+    Route::get('customer/construction' . config('apps.general.suffix'), [FeCustomerController::class, 'construction'])->name('customer.construction');
+    Route::get('customer/construction/{id}/product' . config('apps.general.suffix'), [FeCustomerController::class, 'constructionProduct'])->name('customer.construction.product')->where(['id' => '[0-9]+']);
+    Route::get('customer/warranty/check' . config('apps.general.suffix'), [FeCustomerController::class, 'warranty'])->name('customer.check.warranty');
+    Route::post('customer/warranty/active', [FeCustomerController::class, 'active'])->name('customer.active.warranty');
+
+    Route::get('customer/order' . config('apps.general.suffix'), [FeCustomerController::class, 'order'])->name('customer.order');
+    Route::get('customer/order/{code}' . config('apps.general.suffix'), [FeCustomerController::class, 'orderDetail'])->name('customer.order.detail');
+    Route::post('customer/order/{code}/cancel', [FeCustomerController::class, 'cancelOrder'])->name('customer.order.cancel');
+
+//    Route::post('customer/order/{code}/cancel', [CustomerController::class, 'cancelOrder'])->name('customer.order.cancel');?
+
+});
+
 Route::group(['middleware' => ['admin', 'locale', 'backend_default_locale']], function () {
-//    Route::get('dashboard/index', [DashboardController::class, 'index'])->name('dashboard.index');
+   Route::get('dashboard/index', [DashboardController::class, 'index'])->name('dashboard.index');
+
+    /* USER */
+   Route::group(['prefix' => 'user'], function () {
+      Route::get('index', [UserController::class, 'index'])->name('user.index');
+      Route::get('create', [UserController::class, 'create'])->name('user.create');
+      Route::post('store', [UserController::class, 'store'])->name('user.store');
+      Route::get('{id}/edit', [UserController::class, 'edit'])->where(['id' => '[0-9]+'])->name('user.edit');
+      Route::post('{id}/update', [UserController::class, 'update'])->where(['id' => '[0-9]+'])->name('user.update');
+      Route::get('{id}/delete', [UserController::class, 'delete'])->where(['id' => '[0-9]+'])->name('user.delete');
+      Route::delete('{id}/destroy', [UserController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('user.destroy');
+   });
+
+    Route::group(['prefix' => 'customer'], function () {
+      Route::get('index', [CustomerController::class, 'index'])->name('customer.index');
+      Route::get('create', [CustomerController::class, 'create'])->name('customer.create');
+      Route::post('store', [CustomerController::class, 'store'])->name('customer.store');
+      Route::get('{id}/edit', [CustomerController::class, 'edit'])->where(['id' => '[0-9]+'])->name('customer.edit');
+      Route::post('{id}/update', [CustomerController::class, 'update'])->where(['id' => '[0-9]+'])->name('customer.update');
+      Route::get('{id}/delete', [CustomerController::class, 'delete'])->where(['id' => '[0-9]+'])->name('customer.delete');
+      Route::delete('{id}/destroy', [CustomerController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('customer.destroy');
+   });
 
     Route::group(['prefix' => 'product/catalogue'], function () {
         Route::get('index', [ProductCatalogueController::class, 'index'])->name('product.catalogue.index');
@@ -117,6 +178,16 @@ Route::group(['middleware' => ['admin', 'locale', 'backend_default_locale']], fu
       Route::get('{id}/delete', [SlideController::class, 'delete'])->where(['id' => '[0-9]+'])->name('slide.delete');
       Route::delete('{id}/destroy', [SlideController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('slide.destroy');
    });
+
+   Route::group(['prefix' => 'review'], function () {
+      Route::get('index', [ReviewController::class, 'index'])->name('review.index');
+      Route::get('{id}/delete', [ReviewController::class, 'delete'])->where(['id' => '[0-9]+'])->name('review.delete');
+      
+   });
+
+    Route::group(['prefix' => 'report'], function () {
+      Route::get('time', [ReportController::class, 'time'])->name('report.time');
+   });
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
@@ -138,3 +209,13 @@ Route::get('cart/{code}/success'.config('apps.general.suffix'), [CartController:
 /* VNPAY */
 Route::get('return/vnpay'.config('apps.general.suffix'), [VnpayController::class, 'vnpay_return'])->name('vnpay.momo_return');
 Route::get('return/vnpay_ipn'.config('apps.general.suffix'), [VnpayController::class, 'vnpay_ipn'])->name('vnpay.vnpay_ipn');
+
+
+Route::post('ajax/review/create', [AjaxReviewController::class, 'create'])->name('ajax.review.create');
+
+Route::post('ajax/cart/create', [AjaxCartController::class, 'create'])->name('ajax.cart.create');
+Route::post('ajax/cart/update', [AjaxCartController::class, 'update'])->name('ajax.cart.update');
+Route::post('ajax/cart/delete', [AjaxCartController::class, 'delete'])->name('ajax.cart.delete');
+
+Route::post('ajax/order/update', [AjaxOrderController::class, 'update'])->name('ajax.order.update');
+Route::get('ajax/order/chart', [AjaxOrderController::class, 'chart'])->name('ajax.order.chart');
