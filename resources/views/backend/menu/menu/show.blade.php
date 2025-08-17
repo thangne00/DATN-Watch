@@ -25,7 +25,7 @@
             <div class="ibox">
                 <div class="ibox-title">
                     <div class="uk-flex uk-flex-middle uk-flex-space-between">
-                        <h5 style="margin:0;">name</h5>
+                        <h5 style="margin:0;">Tên</h5>
                         <a href="" class="custom-button">Cập nhật Menu cấp
                             1</a>
                     </div>
