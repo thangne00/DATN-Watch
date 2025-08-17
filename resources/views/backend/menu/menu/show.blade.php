@@ -18,7 +18,7 @@
                     vị trí mong muốn</p>
                 <p>+ Dễ dàng khởi tạo menu con bằng cách ấn vào nút <span class="text-success">Quản lý menu con</span>
                 </p>
-                <p>+ <span class="text-danger">Hỗ trợ tới danh mục con cấp 5 okkk </span></p>
+                <p>+ <span class="text-danger">Hỗ trợ tới danh mục con cấp 5 </span></p>
             </div>
         </div>
         <div class="col-lg-8">
