@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Source;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AuthRequest extends FormRequest
+class StoreSourceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,17 +22,17 @@ class AuthRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email',
-            'password' => 'required',
+            'name' => 'required',
+            'keyword' => 'required|unique:sources',
         ];
     }
 
     public function messages(): array
     {
         return [
-            'email.required' => 'Bạn chưa nhập vào Email.',
-            'email.email' => 'Email chưa đúng định dạng. Ví dụ: abc@gmail.com',
-            'password.required' => 'Bạn chưa nhập vào mật khẩu.'
+            'name.required' => 'Bạn chưa nhập tên của nguồn khách',
+            'keyword.required' => 'Bạn chưa nhập từ khóa của nguồn khách',
+            'keyword.unique' => 'Từ khóa đã tồn tại, hãy chọn từ khóa khác',
         ];
     }
 }

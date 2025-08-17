@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Menu;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AuthRequest extends FormRequest
+class StoreMenuChildrenRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,17 +22,16 @@ class AuthRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email',
-            'password' => 'required',
+            'menu.name' => [
+                'required',
+            ]
         ];
     }
 
     public function messages(): array
     {
         return [
-            'email.required' => 'Bạn chưa nhập vào Email.',
-            'email.email' => 'Email chưa đúng định dạng. Ví dụ: abc@gmail.com',
-            'password.required' => 'Bạn chưa nhập vào mật khẩu.'
+            'menu.name.required' => 'Bạn phải tạo ít nhất 1 menu'
         ];
     }
 }

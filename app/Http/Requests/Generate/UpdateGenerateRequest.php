@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Generate;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AuthRequest extends FormRequest
+class UpdateGenerateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,17 +22,17 @@ class AuthRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email',
-            'password' => 'required',
+            'name' => 'required|unique:generates,name, '.$this->id.'',
+            'schema' => 'required',
         ];
     }
 
     public function messages(): array
     {
         return [
-            'email.required' => 'Bạn chưa nhập vào Email.',
-            'email.email' => 'Email chưa đúng định dạng. Ví dụ: abc@gmail.com',
-            'password.required' => 'Bạn chưa nhập vào mật khẩu.'
+            'name.required' => 'Bạn chưa nhập vào tên module.',
+            'name.unique' => 'Module đã tồn tại.',
+            'schema.required' => 'Bạn chưa nhập vào schema của module.',
         ];
     }
 }

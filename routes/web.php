@@ -26,6 +26,9 @@ use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\Customer\CustomerController;
 use App\Http\Controllers\Frontend\AgencyAuthController as FeAgencyAuthController;
 use App\Http\Controllers\Frontend\CustomerController as FeCustomerController;
+use App\Http\Controllers\Frontend\AgencyController as FeAgencyController;
+
+use App\Http\Controllers\Backend\Crm\AgencyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -134,6 +137,16 @@ Route::group(['middleware' => ['admin', 'locale', 'backend_default_locale']], fu
       Route::delete('{id}/destroy', [AttributeController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('attribute.destroy');
    });
 
+      Route::group(['prefix' => 'agency'], function () {
+      Route::get('index', [AgencyController::class, 'index'])->name('agency.index');
+      Route::get('create', [AgencyController::class, 'create'])->name('agency.create');
+      Route::post('store', [AgencyController::class, 'store'])->name('agency.store');
+      Route::get('{id}/edit', [AgencyController::class, 'edit'])->where(['id' => '[0-9]+'])->name('agency.edit');
+      Route::post('{id}/update', [AgencyController::class, 'update'])->where(['id' => '[0-9]+'])->name('agency.update');
+      Route::get('{id}/delete', [AgencyController::class, 'delete'])->where(['id' => '[0-9]+'])->name('agency.delete');
+      Route::delete('{id}/destroy', [AgencyController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('agency.destroy');
+   });
+
     Route::group(['prefix' => 'promotion'], function () {
       Route::get('index', [PromotionController::class, 'index'])->name('promotion.index');
       Route::get('create', [PromotionController::class, 'create'])->name('promotion.create');
@@ -164,6 +177,17 @@ Route::group(['middleware' => ['admin', 'locale', 'backend_default_locale']], fu
       Route::delete('{id}/destroy', [PostController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('post.destroy');
    });
 
+     Route::group(['prefix' => 'construction'], function () {
+      Route::get('index', [ConstructionController::class, 'index'])->name('construction.index');
+      Route::get('create', [ConstructionController::class, 'create'])->name('construction.create');
+      Route::post('store', [ConstructionController::class, 'store'])->name('construction.store');
+      Route::get('{id}/edit', [ConstructionController::class, 'edit'])->where(['id' => '[0-9]+'])->name('construction.edit');
+      Route::post('{id}/update', [ConstructionController::class, 'update'])->where(['id' => '[0-9]+'])->name('construction.update');
+      Route::get('{id}/delete', [ConstructionController::class, 'delete'])->where(['id' => '[0-9]+'])->name('construction.delete');
+      Route::delete('{id}/destroy', [ConstructionController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('construction.destroy');
+      Route::get('warranty', [ConstructionController::class, 'warranty'])->name('construction.warranty');
+   });
+
     Route::group(['prefix' => 'order'], function () {
       Route::get('index', [OrderController::class, 'index'])->name('order.index');
       Route::get('{id}/detail', [OrderController::class, 'detail'])->where(['id' => '[0-9]+'])->name('order.detail');
@@ -188,6 +212,30 @@ Route::group(['middleware' => ['admin', 'locale', 'backend_default_locale']], fu
     Route::group(['prefix' => 'report'], function () {
       Route::get('time', [ReportController::class, 'time'])->name('report.time');
    });
+
+
+   Route::post('ajax/dashboard/changeStatus', [AjaxDashboardController::class, 'changeStatus'])->name('ajax.dashboard.changeStatus');
+   Route::post('ajax/dashboard/changeStatusAll', [AjaxDashboardController::class, 'changeStatusAll'])->name('ajax.dashboard.changeStatusAll');
+   Route::get('ajax/dashboard/getMenu', [AjaxDashboardController::class, 'getMenu'])->name('ajax.dashboard.getMenu');
+   
+   Route::get('ajax/dashboard/findPromotionObject', [AjaxDashboardController::class, 'findPromotionObject'])->name('ajax.dashboard.findPromotionObject');
+   Route::get('ajax/dashboard/getPromotionConditionValue', [AjaxDashboardController::class, 'getPromotionConditionValue'])->name('ajax.dashboard.getPromotionConditionValue');
+   Route::get('ajax/attribute/getAttribute', [AjaxAttributeController::class, 'getAttribute'])->name('ajax.attribute.getAttribute');
+   Route::get('ajax/attribute/loadAttribute', [AjaxAttributeController::class, 'loadAttribute'])->name('ajax.attribute.getAttribute');
+   Route::post('ajax/menu/createCatalogue', [AjaxMenuController::class, 'createCatalogue'])->name('ajax.menu.createCatalogue');
+   Route::post('ajax/menu/drag', [AjaxMenuController::class, 'drag'])->name('ajax.menu.drag');
+   Route::post('ajax/menu/deleteMenu', [AjaxMenuController::class, 'deleteMenu'])->name('ajax.menu.deleteMenu');
+   Route::post('ajax/slide/order', [AjaxSlideController::class, 'order'])->name('ajax.slide.order');
+   Route::get('ajax/product/loadProductPromotion', [AjaxProductController::class, 'loadProductPromotion'])->name('ajax.loadProductPromotion');
+   
+   Route::get('ajax/source/getAllSource', [AjaxSourceController::class, 'getAllSource'])->name('ajax.getAllSource');
+   Route::post('ajax/order/update', [AjaxOrderController::class, 'update'])->name('ajax.order.update');
+   Route::get('ajax/order/chart', [AjaxOrderController::class, 'chart'])->name('ajax.order.chart');
+
+   Route::post('ajax/construct/createAgency', [AjaxConstructController::class,'createAgency'])->name('ajax.construct.createAgency');
+   Route::post('ajax/construct/createCustomer', [AjaxCustomerController::class,'createCustomer'])->name('ajax.construct.createCustomer');
+   Route::post('ajax/product/deleteProduct', [AjaxConstructController::class, 'deleteProduct'])->name('ajax.product.deleteProduct');
+   Route::get('ajax/dashboard/findInformationObject', [AjaxDashboardController::class, 'findInformationObject'])->name('ajax.findInformationObject');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
