@@ -362,6 +362,140 @@
             }
         });
     </script>
+
+    <style>
+        /* Modal dialog */
+        .modal-dialog {
+            max-width: 500px;
+            margin-top: 10%;
+            border-radius: 10px;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Modal header */
+        .modal-header {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            padding: 15px 20px;
+            position: relative;
+        }
+
+        .modal-title {
+            font-weight: 600;
+            font-size: 2rem;
+            color: #333;
+            margin: 0;
+        }
+
+        /* Close button */
+        .modal-header .close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: #aaa;
+            opacity: 0.7;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            transition: color 0.3s ease, opacity 0.3s ease;
+        }
+
+        .modal-header .close:hover {
+            color: #dc3545; /* Bootstrap danger color */
+            opacity: 1;
+        }
+
+        /* Modal body */
+        .modal-body {
+            padding: 20px;
+            color: #444;
+            font-size: 14px;
+            background-color: #fff;
+        }
+
+        /* Form group spacing */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        /* Labels */
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        /* Inputs and textarea */
+        .form-control,
+        .form-control-file {
+            width: 100%;
+            padding: 8px 12px;
+            font-size: 1rem;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            box-sizing: border-box;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-control:focus,
+        .form-control-file:focus {
+            border-color: #80bdff;
+            outline: 0;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+        }
+
+        /* Preview image */
+        #preview_refund_bill {
+            display: block;
+            margin-top: 10px;
+            max-width: 200px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Modal footer */
+        .modal-footer {
+            padding: 15px 20px;
+            border-top: 1px solid #dee2e6;
+            text-align: right;
+        }
+
+        /* Buttons */
+        .btn-secondary {
+            background-color: #6c757d;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 6px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-dangers {
+            background-color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            color: black;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-dangers:hover {
+            background-color: #1c84c6;
+            color: black;
+        }
+
+    </style>
     
 
     <style>
