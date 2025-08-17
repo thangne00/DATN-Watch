@@ -27,7 +27,7 @@ use App\Http\Controllers\Backend\Customer\CustomerController;
 use App\Http\Controllers\Frontend\AgencyAuthController as FeAgencyAuthController;
 use App\Http\Controllers\Frontend\CustomerController as FeCustomerController;
 use App\Http\Controllers\Frontend\AgencyController as FeAgencyController;
-
+use App\Http\Controllers\Frontend\AuthController as FeAuthController;
 use App\Http\Controllers\Backend\Crm\AgencyController;
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +44,18 @@ Route::get('admin', [AuthController::class, 'index'])->name('auth.admin')->middl
 Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
 Route::post('login', [AuthController::class, 'login'])->name('auth.login');
 
+
+Route::get('customer/login'.config('apps.general.suffix'), [FeAuthController::class, 'index'])->name('fe.auth.login'); 
+Route::get('customer/check/login'.config('apps.general.suffix'), [FeAuthController::class, 'login'])->name('fe.auth.dologin');
+
+Route::get('customer/password/forgot'.config('apps.general.suffix'), [FeAuthController::class, 'forgotCustomerPassword'])->name('forgot.customer.password');
+Route::get('customer/password/email'.config('apps.general.suffix'), [FeAuthController::class, 'verifyCustomerEmail'])->name('customer.password.email');
+Route::get('customer/register'.config('apps.general.suffix'), [FeAuthController::class, 'register'])->name('customer.register');
+Route::post('customer/reg'.config('apps.general.suffix'), [FeAuthController::class, 'registerAccount'])->name('customer.reg');
+
+
+Route::get('customer/password/update'.config('apps.general.suffix'), [FeAuthController::class, 'updatePassword'])->name('customer.update.password');
+Route::post('customer/password/change'.config('apps.general.suffix'), [FeAuthController::class, 'changePassword'])->name('customer.password.reset');
 
 /* AGENCY  */
 Route::get('agency/login' . config('apps.general.suffix'), [FeAgencyAuthController::class, 'indexAgency'])->name('fe.auth.agency.login');
