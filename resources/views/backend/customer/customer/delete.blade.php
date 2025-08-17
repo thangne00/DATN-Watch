@@ -10,7 +10,8 @@
                     <div class="panel-title">Thông tin chung</div>
                     <div class="panel-description">
                         <p>Bạn đang muốn xóa thành viên có email là: {{ $customer->email }}</p>
-                        <p>Lưu ý:</p>
+                        <p>Lưu ý:ls -al ~/.ssh
+                        </p>
                     </div>
                 </div>
             </div>
@@ -22,9 +23,8 @@
                                 <div class="form-row">
                                     <label for="" class="control-label text-left">Email <span
                                             class="text-danger">(*)</span></label>
-                                    <input type="text" name="email"
-                                        value="{{ old('email', ($customer->email) ?? '') }}" class="form-control"
-                                        placeholder="" autocomplete="off" readonly>
+                                    <input type="text" name="email" value="{{ old('email', ($customer->email) ?? '') }}"
+                                        class="form-control" placeholder="" autocomplete="off" readonly>
                                 </div>
                             </div>
                             <div class="col-lg-6">
