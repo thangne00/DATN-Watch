@@ -12,7 +12,7 @@
                     <div class="panel-title">Thông tin chung</div>
                     <div class="panel-description">
                         <p>Nhập thông tin chung của người sử dụng</p>
-                        <p>Lưu ý: <span class="text-danger">(*)</span> là bắt buộc</p>
+                        <p>Lưu ý: <span class="text-danger">(*)</span> là ko bắt buộc</p>
                     </div>
                 </div>
             </div>
@@ -24,9 +24,8 @@
                                 <div class="form-row">
                                     <label for="" class="control-label text-left">Email <span
                                             class="text-danger">(*)</span></label>
-                                    <input type="text" name="email"
-                                        value="{{ old('email', ($customer->email) ?? '') }}" class="form-control"
-                                        placeholder="" autocomplete="off">
+                                    <input type="text" name="email" value="{{ old('email', ($customer->email) ?? '') }}"
+                                        class="form-control" placeholder="" autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-lg-3">
@@ -72,7 +71,7 @@
                                         @foreach($sources as $key => $val)
                                                                             <option {{
                                             $val->id == old('source_id', (isset($customer->source_id)) ? $customer->source_id : '') ? 'selected' : ''
-                                                                                }}  value="{{ $val->id }}">{{ $val->name }}</option>
+                                                                                                                    }}  value="{{ $val->id }}">{{ $val->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
