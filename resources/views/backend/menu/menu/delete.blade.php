@@ -8,7 +8,7 @@
                 <div class="panel-head">
                     <div class="panel-title">Thông tin chung</div>
                     <div class="panel-description">
-                        <p>Bạn đang muốn xóa </p>
+                        <p>Bạn chắc chắn muốn xóa ?</p>
                         <p>Lưu ý: Không thể khôi phục thành viên sau khi xóa. Hãy chắc chắn bạn muốn thực hiện chức năng
                             này</p>
                     </div>
