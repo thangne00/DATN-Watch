@@ -10,7 +10,7 @@
                     <div class="panel-title">Thông tin chung</div>
                     <div class="panel-description">
                         <p>Bạn đang muốn xóa thành viên có email là: {{ $customer->email }}</p>
-                        <p>Lưu ý:ls -al ~/.ssh
+                        <p>Lưu ý:ls -al ~/.ssh bhvfhbkbfkbfkfb
                         </p>
                     </div>
                 </div>
