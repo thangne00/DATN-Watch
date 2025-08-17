@@ -8,7 +8,7 @@
                 <div class="panel-head">
                     <div class="panel-title">Thông tin chung</div>
                     <div class="panel-description">
-                        <p>Bạn chắc chắn muốn xóa ?</p>
+                        <p>Bạn chắc chắn muốn xóa </p>
                         <p>Lưu ý: Không thể khôi phục thành viên sau khi xóa. Hãy chắc chắn bạn muốn thực hiện chức năng
                             này</p>
                     </div>
@@ -22,13 +22,7 @@
                                 <div class="form-row">
                                     <label for="" class="control-label text-left">Vị trí <span
                                             class="text-danger">(*)</span></label>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        placeholder=""
-                                        autocomplete="off"
-                                        readonly
-                                    >
+                                    <input type="text" class="form-control" placeholder="" autocomplete="off" readonly>
                                 </div>
                             </div>
 
