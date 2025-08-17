@@ -26,6 +26,9 @@ use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\Customer\CustomerController;
 use App\Http\Controllers\Frontend\AgencyAuthController as FeAgencyAuthController;
 use App\Http\Controllers\Frontend\CustomerController as FeCustomerController;
+use App\Http\Controllers\Frontend\AgencyController as FeAgencyController;
+
+use App\Http\Controllers\Backend\Crm\AgencyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -132,6 +135,16 @@ Route::group(['middleware' => ['admin', 'locale', 'backend_default_locale']], fu
       Route::post('{id}/update', [AttributeController::class, 'update'])->where(['id' => '[0-9]+'])->name('attribute.update');
       Route::get('{id}/delete', [AttributeController::class, 'delete'])->where(['id' => '[0-9]+'])->name('attribute.delete');
       Route::delete('{id}/destroy', [AttributeController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('attribute.destroy');
+   });
+
+      Route::group(['prefix' => 'agency'], function () {
+      Route::get('index', [AgencyController::class, 'index'])->name('agency.index');
+      Route::get('create', [AgencyController::class, 'create'])->name('agency.create');
+      Route::post('store', [AgencyController::class, 'store'])->name('agency.store');
+      Route::get('{id}/edit', [AgencyController::class, 'edit'])->where(['id' => '[0-9]+'])->name('agency.edit');
+      Route::post('{id}/update', [AgencyController::class, 'update'])->where(['id' => '[0-9]+'])->name('agency.update');
+      Route::get('{id}/delete', [AgencyController::class, 'delete'])->where(['id' => '[0-9]+'])->name('agency.delete');
+      Route::delete('{id}/destroy', [AgencyController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('agency.destroy');
    });
 
     Route::group(['prefix' => 'promotion'], function () {
