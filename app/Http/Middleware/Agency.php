@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class AuthenticateMiddleware
+class Agency
 {
     /**
      * Handle an incoming request.
@@ -17,8 +17,8 @@ class AuthenticateMiddleware
     public function handle(Request $request, Closure $next): Response
     {
 
-        if(Auth::id() == null){
-            return redirect()->route('auth.admin')->with('error','Bạn phải đăng nhập để sử dụng chức năng này');
+        if(Auth::guard('agency')->id() == null){
+            return redirect()->route('home.index')->with('error','Bạn phải đăng nhập để sử dụng chức năng này');
         }
 
         return $next($request);
