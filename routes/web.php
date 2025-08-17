@@ -177,6 +177,17 @@ Route::group(['middleware' => ['admin', 'locale', 'backend_default_locale']], fu
       Route::delete('{id}/destroy', [PostController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('post.destroy');
    });
 
+     Route::group(['prefix' => 'construction'], function () {
+      Route::get('index', [ConstructionController::class, 'index'])->name('construction.index');
+      Route::get('create', [ConstructionController::class, 'create'])->name('construction.create');
+      Route::post('store', [ConstructionController::class, 'store'])->name('construction.store');
+      Route::get('{id}/edit', [ConstructionController::class, 'edit'])->where(['id' => '[0-9]+'])->name('construction.edit');
+      Route::post('{id}/update', [ConstructionController::class, 'update'])->where(['id' => '[0-9]+'])->name('construction.update');
+      Route::get('{id}/delete', [ConstructionController::class, 'delete'])->where(['id' => '[0-9]+'])->name('construction.delete');
+      Route::delete('{id}/destroy', [ConstructionController::class, 'destroy'])->where(['id' => '[0-9]+'])->name('construction.destroy');
+      Route::get('warranty', [ConstructionController::class, 'warranty'])->name('construction.warranty');
+   });
+
     Route::group(['prefix' => 'order'], function () {
       Route::get('index', [OrderController::class, 'index'])->name('order.index');
       Route::get('{id}/detail', [OrderController::class, 'detail'])->where(['id' => '[0-9]+'])->name('order.detail');
