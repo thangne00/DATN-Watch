@@ -2,33 +2,39 @@
 
 namespace App\Services;
 
-use App\Services\Interfaces\AttributeServiceInterface;
+use App\Services\Interfaces\AttributeCatalogueServiceInterface;
 use App\Services\BaseService;
-use App\Repositories\Interfaces\AttributeRepositoryInterface as AttributeRepository;
+use App\Repositories\Interfaces\AttributeCatalogueRepositoryInterface as AttributeCatalogueRepository;
 use App\Repositories\Interfaces\RouterRepositoryInterface as RouterRepository;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Classes\Nestedsetbie;
 use Illuminate\Support\Str;
 
 /**
- * Class AttributeService
+ * Class AttributeCatalogueService
  * @package App\Services
  */
-class AttributeService extends BaseService implements AttributeServiceInterface
+class AttributeCatalogueService extends BaseService implements AttributeCatalogueServiceInterface
 {
-    protected $attributeRepository;
+
+
+    protected $attributeCatalogueRepository;
     protected $routerRepository;
+    protected $nestedset;
+    protected $language;
+    protected $controllerName = 'AttributeCatalogueController';
     
+
     public function __construct(
-        AttributeRepository $attributeRepository,
+        AttributeCatalogueRepository $attributeCatalogueRepository,
         RouterRepository $routerRepository,
     ){
-        $this->attributeRepository = $attributeRepository;
+        $this->attributeCatalogueRepository = $attributeCatalogueRepository;
         $this->routerRepository = $routerRepository;
-        $this->controllerName = 'AttributeController';
     }
 
     public function paginate($request, $languageId){
@@ -37,43 +43,37 @@ class AttributeService extends BaseService implements AttributeServiceInterface
             'keyword' => addslashes($request->input('keyword')),
             'publish' => $request->integer('publish'),
             'where' => [
-                ['tb2.language_id', '=', $languageId],
-            ],
+                ['tb2.language_id', '=', $languageId]
+            ]
         ];
-        $paginationConfig = [
-            'path' => 'attribute.index', 
-            'groupBy' => $this->paginateSelect()
-        ];
-        $orderBy = ['attributes.id', 'DESC'];
-        $relations = ['attribute_catalogues'];
-        $rawQuery = $this->whereRaw($request, $languageId);
-        // dd($rawQuery);
-        $joins = [
-            ['attribute_language as tb2', 'tb2.attribute_id', '=', 'attributes.id'],
-            ['attribute_catalogue_attribute as tb3', 'attributes.id', '=', 'tb3.attribute_id'],
-        ];
-
-        $attributes = $this->attributeRepository->pagination(
+        $attributeCatalogues = $this->attributeCatalogueRepository->pagination(
             $this->paginateSelect(), 
             $condition, 
             $perPage,
-            $paginationConfig,  
-            $orderBy,
-            $joins,  
-            $relations,
-            $rawQuery
-        ); 
-        return $attributes;
+            ['path' => 'attribute.catalogue.index'],  
+            ['attribute_catalogues.lft', 'ASC'],
+            [
+                ['attribute_catalogue_language as tb2','tb2.attribute_catalogue_id', '=' , 'attribute_catalogues.id']
+            ], 
+            ['languages']
+        );
+
+        return $attributeCatalogues;
     }
 
     public function create($request, $languageId){
         DB::beginTransaction();
         try{
-            $attribute = $this->createAttribute($request);
-            if($attribute->id > 0){
-                $this->updateLanguageForAttribute($attribute, $request, $languageId);
-                $this->updateCatalogueForAttribute($attribute, $request);
-                $this->createRouter($attribute, $request, $this->controllerName, $languageId);
+            $attributeCatalogue = $this->createCatalogue($request);
+            if($attributeCatalogue->id > 0){
+                $this->updateLanguageForCatalogue($attributeCatalogue, $request, $languageId);
+                $this->createRouter($attributeCatalogue, $request, $this->controllerName, $languageId);
+                $this->nestedset = new Nestedsetbie([
+                    'table' => 'attribute_catalogues',
+                    'foreignkey' => 'attribute_catalogue_id',
+                    'language_id' =>  $languageId ,
+                ]);
+                $this->nestedset();
             }
             DB::commit();
             return true;
@@ -88,13 +88,19 @@ class AttributeService extends BaseService implements AttributeServiceInterface
     public function update($id, $request, $languageId){
         DB::beginTransaction();
         try{
-            $attribute = $this->attributeRepository->findById($id);
-            if($this->uploadAttribute($attribute, $request)){
-                $this->updateLanguageForAttribute($attribute, $request, $languageId);
-                $this->updateCatalogueForAttribute($attribute, $request);
+            $attributeCatalogue = $this->attributeCatalogueRepository->findById($id);
+            $flag = $this->updateCatalogue($attributeCatalogue, $request);
+            if($flag == TRUE){
+                $this->updateLanguageForCatalogue($attributeCatalogue, $request, $languageId);
                 $this->updateRouter(
-                    $attribute, $request, $this->controllerName, $languageId
+                    $attributeCatalogue, $request, $this->controllerName, $languageId
                 );
+                $this->nestedset = new Nestedsetbie([
+                    'table' => 'attribute_catalogues',
+                    'foreignkey' => 'attribute_catalogue_id',
+                    'language_id' =>  $languageId ,
+                ]);
+                $this->nestedset();
             }
             DB::commit();
             return true;
@@ -106,90 +112,66 @@ class AttributeService extends BaseService implements AttributeServiceInterface
         }
     }
 
-    public function destroy($id){
+    public function destroy($id, $languageId){
         DB::beginTransaction();
         try{
-            $attribute = $this->attributeRepository->delete($id);
-            
+            $attributeCatalogue = $this->attributeCatalogueRepository->delete($id);
+            $this->nestedset = new Nestedsetbie([
+                'table' => 'attribute_catalogues',
+                'foreignkey' => 'attribute_catalogue_id',
+                'language_id' =>  $languageId ,
+            ]);
+            $this->nestedset();
             DB::commit();
             return true;
         }catch(\Exception $e ){
             DB::rollBack();
             // Log::error($e->getMessage());
-            // echo $e->getMessage();die();
+            echo $e->getMessage();die();
             return false;
         }
     }
 
-    private function createAttribute($request){
+    private function createCatalogue($request){
         $payload = $request->only($this->payload());
+        $payload['album'] = $this->formatAlbum($request);
         $payload['user_id'] = Auth::id();
-        $payload['album'] = $this->formatAlbum($request);
-        $attribute = $this->attributeRepository->create($payload);
-        return $attribute;
+        $attributeCatalogue = $this->attributeCatalogueRepository->create($payload);
+        return $attributeCatalogue;
     }
 
-    private function uploadAttribute($attribute, $request){
+    private function updateCatalogue($attributeCatalogue, $request){
         $payload = $request->only($this->payload());
         $payload['album'] = $this->formatAlbum($request);
-        return $this->attributeRepository->update($attribute->id, $payload);
+        $flag = $this->attributeCatalogueRepository->update($attributeCatalogue->id, $payload);
+        return $flag;
     }
 
-    private function updateLanguageForAttribute($attribute, $request, $languageId){
+    private function updateLanguageForCatalogue($attributeCatalogue, $request, $languageId){
+        $payload = $this->formatLanguagePayload($attributeCatalogue, $request, $languageId);
+        $attributeCatalogue->languages()->detach([$languageId, $attributeCatalogue->id]);
+        $language = $this->attributeCatalogueRepository->createPivot($attributeCatalogue, $payload, 'languages');
+        return $language;
+    }
+
+    private function formatLanguagePayload($attributeCatalogue, $request, $languageId){
         $payload = $request->only($this->payloadLanguage());
-        $payload = $this->formatLanguagePayload($payload, $attribute->id, $languageId);
-        $attribute->languages()->detach([$languageId, $attribute->id]);
-        return $this->attributeRepository->createPivot($attribute, $payload, 'languages');
-    }
-
-    private function updateCatalogueForAttribute($attribute, $request){
-        $attribute->attribute_catalogues()->sync($this->catalogue($request));
-    }
-
-    private function formatLanguagePayload($payload, $attributeId, $languageId){
         $payload['canonical'] = Str::slug($payload['canonical']);
         $payload['language_id'] =  $languageId;
-        $payload['attribute_id'] = $attributeId;
+        $payload['attribute_catalogue_id'] = $attributeCatalogue->id;
         return $payload;
     }
 
-
-    private function catalogue($request){
-        if($request->input('catalogue') != null){
-            return array_unique(array_merge($request->input('catalogue'), [$request->attribute_catalogue_id]));
-        }
-        return [$request->attribute_catalogue_id];
-    }
+   
     
-    
-
-    private function whereRaw($request, $languageId){
-        $rawCondition = [];
-        if($request->integer('attribute_catalogue_id') > 0){
-            $rawCondition['whereRaw'] =  [
-                [
-                    'tb3.attribute_catalogue_id IN (
-                        SELECT id
-                        FROM attribute_catalogues
-                        JOIN attribute_catalogue_language ON attribute_catalogues.id = attribute_catalogue_language.attribute_catalogue_id
-                        WHERE lft >= (SELECT lft FROM attribute_catalogues as pc WHERE pc.id = ?)
-                        AND rgt <= (SELECT rgt FROM attribute_catalogues as pc WHERE pc.id = ?)
-                        AND attribute_catalogue_language.language_id = '.$languageId.'
-                    )',
-                    [$request->integer('attribute_catalogue_id'), $request->integer('attribute_catalogue_id')]
-                ]
-            ];
-            
-        }
-        return $rawCondition;
-    }
 
     private function paginateSelect(){
         return [
-            'attributes.id', 
-            'attributes.publish',
-            'attributes.image',
-            'attributes.order',
+            'attribute_catalogues.id', 
+            'attribute_catalogues.publish',
+            'attribute_catalogues.image',
+            'attribute_catalogues.level',
+            'attribute_catalogues.order',
             'tb2.name', 
             'tb2.canonical',
         ];
@@ -197,14 +179,13 @@ class AttributeService extends BaseService implements AttributeServiceInterface
 
     private function payload(){
         return [
+            'parent_id',
             'follow',
             'publish',
             'image',
             'album',
-            'attribute_catalogue_id',
         ];
     }
-
     private function payloadLanguage(){
         return [
             'name',
