@@ -6,7 +6,7 @@
         @include('backend.menu.menu.component.list')
 
         <div class="text-right mb15">
-            <button class="btn btn-primary" type="submit">save</button>
+            <button class="btn btn-primary" type="submit">Bảo vệ</button>
         </div>
     </div>
 </form>

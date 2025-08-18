@@ -10,7 +10,7 @@
                     href=""><img src="" alt=""></a>
 
             </div>
-            <div class="panel-title">Danh sách menu</div>
+            <div class="panel-title">Danh sách </div>
             <div class="panel-description">
                 <p>+ Danh sách Menu giúp bạn dễ dàng kiểm soát bố cục menu. Bạn có thể thêm mới hoặc cập nhật menu bằng
                     nút <span class="text-success">Cập nhật Menu</span></p>

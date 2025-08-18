@@ -1,4 +1,4 @@
-@include('backend.dashboard.component.breadcrumb', 
+@include('backend.dashboard.component.breadcrumb',
 ($config['method'] == 'create') ? ['title' => $config['seo']['create']['title']] : ['title' => $config['seo']['edit']['title']])
 @include('backend.dashboard.component.formError')
 @php
@@ -11,7 +11,7 @@
             <div class="col-lg-3">
                 <div class="ibox w">
                     <div class="ibox-title">
-                        <h5>Thông tin chung</h5>
+                        <h5>Thông </h5>
                     </div>
                     <div class="ibox-content">
                         <div class="row">
@@ -21,8 +21,8 @@
                                     <select name="agency_id" class="form-control setupSelect2">
                                         <option value="0">[Chọn Đại Lý]</option>
                                         @foreach($agencys as $key => $val)
-                                        <option {{ 
-                                            $key == old('agency_id', (isset($construct->agency_id)) ? $construct->agency_id : '') ? 'selected' : '' 
+                                        <option {{
+                                            $key == old('agency_id', (isset($construct->agency_id)) ? $construct->agency_id : '') ? 'selected' : ''
                                             }} value="{{ $key }}">{{ $val }}</option>
                                         @endforeach
                                     </select>
@@ -32,8 +32,8 @@
                                     <select name="customer_id" class="form-control setupSelect2">
                                         <option value="0">[Chọn khách hàng]</option>
                                         @foreach($customers as $key => $val)
-                                        <option {{ 
-                                            $key == old('customer_id', (isset($construct->customer_id)) ? $construct->customer_id : '') ? 'selected' : '' 
+                                        <option {{
+                                            $key == old('customer_id', (isset($construct->customer_id)) ? $construct->customer_id : '') ? 'selected' : ''
                                             }} value="{{ $key }}" >{{ $val }}</option>
                                         @endforeach
                                     </select>
@@ -43,8 +43,8 @@
                                     <select name="province_id" class="form-control setupSelect2">
                                         <option value="0">[Chọn thành phố]</option>
                                         @foreach($provinces as $key => $val)
-                                        <option {{ 
-                                            $val->code == old('province_id', (isset($construct->province_id)) ? $construct->province_id : '') ? 'selected' : '' 
+                                        <option {{
+                                            $val->code == old('province_id', (isset($construct->province_id)) ? $construct->province_id : '') ? 'selected' : ''
                                             }} value="{{ $val->code }}">{{ $val->name }}</option>
                                         @endforeach
                                     </select>
@@ -54,8 +54,8 @@
                                     <div for="" class="control-label text-left">Xác nhận công trình<span class="text-danger"> (*)</span></div>
                                     <select name="confirm" class="form-control setupSelect2">
                                         @foreach(['pending' => 'Chưa xác nhận', 'confirmed' => 'Xác nhận'] as $key => $val)
-                                        <option {{ 
-                                            $key == old('confirm', (isset($construct->confirm)) ? $construct->confirm : '') ? 'selected' : '' 
+                                        <option {{
+                                            $key == old('confirm', (isset($construct->confirm)) ? $construct->confirm : '') ? 'selected' : ''
                                             }} value="{{ $key }}">{{ $val }}</option>
                                         @endforeach
                                     </select>
@@ -165,7 +165,7 @@
                                 <strong>Bảo hành (tháng)</strong>
                             </div>
                             <div class="col-lg-1 text-right">
-                                
+
                             </div>
                         </div>
                         <div class="construction-product-result mt20">
@@ -178,14 +178,14 @@
                                     <div class="row uk-flex uk-flex-middle mb10 search-result-item" id="model-{{ $product['id'][$key] }}" data-modelid="{{ $product['id'][$key] }}">
                                         <div class="col-lg-4">
                                             <div class="form-row">
-                                                <input 
+                                                <input
                                                     type="text"
                                                     readonly
                                                     class="form-control"
                                                     value="{{ $val }}"
                                                     name="product[name][]"
                                                 >
-                                                <input 
+                                                <input
                                                     type="hidden"
                                                     name="product[id][]"
                                                     value="{{ $product['id'][$key] }}"
@@ -194,7 +194,7 @@
                                         </div>
                                         <div class="col-lg-3">
                                             <div class="form-row">
-                                                <input 
+                                                <input
                                                     type="text"
                                                     name="product[color][]"
                                                     class="form-control"
@@ -204,7 +204,7 @@
                                         </div>
                                         <div class="col-lg-2">
                                             <div class="form-row">
-                                                <input 
+                                                <input
                                                     type="text"
                                                     name="product[quantity][]"
                                                     class="form-control text-right int"
@@ -214,7 +214,7 @@
                                         </div>
                                         <div class="col-lg-2">
                                             <div class="form-row">
-                                                <input 
+                                                <input
                                                     type="text"
                                                     name="product[warranty][]"
                                                     class="form-control text-right int"

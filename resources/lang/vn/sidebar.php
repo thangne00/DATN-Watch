@@ -1,4 +1,4 @@
-<?php
+<?php   
 return [
     'module' => [
         [
@@ -205,7 +205,7 @@ return [
                     'title' => 'Quản lý Widget',
                     'route' => 'widget/index'
                 ],
-
+                
             ]
         ]
     ],
