@@ -1,20 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="resources/uikit/css/uikit.modify.css">
-        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-        <link rel="stylesheet" href="resources/library/css/library.css">
-        <link rel="stylesheet" href="resources/plugins/wow/css/libs/animate.css">
-        <link rel="stylesheet" href="resources/style.css">
-        <script src="resources/library/js/jquery.js"></script>
-        <title>Home 2 | Economic Marketplace</title>
-    </head>
-    <body>
-
-
+<div id="popup" class="uk-modal popupProduct">
+    <div class="uk-modal-dialog modal-width-1138">
+        <a class="uk-modal-close uk-close"></a>
         <?php   
             $colorImage = [
                 'https://wp.alithemes.com/html/ecom/demo/assets/imgs/page/product/img-gallery-2.jpg',
@@ -24,8 +10,7 @@
                 'https://wp.alithemes.com/html/ecom/demo/assets/imgs/page/product/img-gallery-5.jpg',
                 'https://wp.alithemes.com/html/ecom/demo/assets/imgs/page/product/img-gallery-6.jpg',
                 'https://wp.alithemes.com/html/ecom/demo/assets/imgs/page/product/img-gallery-7.jpg',
-            ];
-
+            ]
         ?>
         <div class="popup-container">
             <div class="panel-body">
@@ -126,7 +111,7 @@
                                 <div class="uk-flex uk-flex-middle">
                                     <div class="quantitybox uk-flex uk-flex-middle">
                                         <div class="minus quantity-button"><img src="resources/img/minus.svg" alt=""></div>
-                                        <input type="text" name="" value="2" class="quantity-text">
+                                        <input type="text" name="" value="1" class="quantity-text">
                                         <div class="plus quantity-button"><img src="resources/img/plus.svg" alt=""></div>
                                     </div>
                                     <div class="btn-group uk-flex uk-flex-middle">
@@ -140,15 +125,5 @@
                 </div>
             </div>
         </div>
-
-
-                                        
-        <script src="resources/plugins/wow/dist/wow.min.js"></script>
-        <script src="resources/uikit/js/uikit.min.js"></script>
-        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-        <script src="resources/uikit/js/components/sticky.min.js"></script>
-        <script src="resources/function.js"></script>
-    </body>
-</html>
-
-
+    </div>
+</div>
