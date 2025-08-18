@@ -10,7 +10,7 @@
                     <div class="panel-title">Thông tin chung</div>
                     <div class="panel-description">
                         <p>Bạn đang muốn xóa công trình : {{ $construct->name }}</p>
-                        <p>Lưu ý: bạn có muốn xóa không</p>
+                        <p>Lưu ý: Xóa là mất đấy</p>
                     </div>
                 </div>
             </div>
