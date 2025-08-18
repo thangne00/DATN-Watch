@@ -9,24 +9,22 @@
                     @endphp
                     <select name="publish" class="form-control setupSelect2 ml10">
                         @foreach(config('apps.general.publish') as $key => $val)
-                        <option {{ ($publish == $key)  ? 'selected' : '' }} value="{{ $key }}">{{ $val }}</option>
+                            <option {{ ($publish == $key) ? 'selected' : '' }} value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                     </select>
                     <div class="uk-search uk-flex uk-flex-middle mr10">
                         <div class="input-group">
-                            <input 
-                                type="text" 
-                                name="keyword" 
-                                value="{{ request('keyword') ?: old('keyword') }}" 
-                                placeholder="Nhập Từ khóa bạn muốn tìm kiếm..." class="form-control"
-                            >
-                           <span class="input-group-btn">
-                               <button type="submit" name="search" value="search" class="btn btn-primary mb0 btn-sm">Tìm Kiếm
+                            <input type="text" name="keyword" value="{{ request('keyword') ?: old('keyword') }}"
+                                placeholder="Nhập Từ khóa bạn muốn tìm " class="form-control">
+                            <span class="input-group-btn">
+                                <button type="submit" name="search" value="search"
+                                    class="btn btn-primary mb0 btn-sm">Tìm Kiếm
                                 </button>
-                           </span>
+                            </span>
                         </div>
                     </div>
-                    <a href="{{ route('construction.create') }}" class="btn btn-danger"><i class="fa fa-plus mr5"></i>Thêm mới công trình</a>
+                    <a href="{{ route('construction.create') }}" class="btn btn-danger"><i
+                            class="fa fa-plus mr5"></i>Thêm mới công trình</a>
                 </div>
             </div>
         </div>
