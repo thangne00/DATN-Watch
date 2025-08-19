@@ -11,7 +11,7 @@
             <div class="col-lg-3">
                 <div class="ibox w">
                     <div class="ibox-title">
-                        <h5>Thông </h5>
+                        <h5>Thông báo </h5>
                     </div>
                     <div class="ibox-content">
                         <div class="row">
