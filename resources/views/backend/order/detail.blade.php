@@ -7,7 +7,7 @@
                 <div class="ibox-title">
                     <div class="uk-flex uk-flex-middle uk-flex-space-between">
                         <div class="ibox-title-left">
-                            <span>Chi tiết đơn hàng #{{ $order->code }}</span>
+                            <span>Chi tiết đơn hàng {{ $order->code }}</span>
                             <span class="badge">
                                 <div class="badge__tip"></div>
                                 <div class="badge-text"> {{ __('cart.delivery')[$order->delivery] }}</div>
@@ -496,7 +496,7 @@
         }
 
     </style>
-    
+
 
     <style>
         /* Wrapper flex cho modal-dialog */
