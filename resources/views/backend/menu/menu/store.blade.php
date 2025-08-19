@@ -10,7 +10,7 @@
 
         <input type="hidden" name="redirect">
         <div class="text-right mb15">
-            <button class="btn btn-primary" type="submit" name="send" value="send">Lưu lại</button>
+            <button class="btn btn-primary" type="submit" name="send" value="send">Lưu lại nè</button>
         </div>
     </div>
 

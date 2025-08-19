@@ -5,14 +5,13 @@
         <div class="col-lg-4">
             <div class="uk-flex uk-flex-middle mb20">
 
-                <a
-                    class="image img-cover system-flag"
-                    href=""><img src="" alt=""></a>
+                <a class="image img-cover system-flag" href=""><img src="" alt=""></a>
 
             </div>
             <div class="panel-title">Danh sách </div>
             <div class="panel-description">
-                <p>+ Danh sách Menu giúp bạn dễ dàng kiểm soát bố cục menu. Bạn có thể thêm mới hoặc cập nhật menu bằng
+                <p>+ Danh sách Menu giúp bạn dễ dàng kiểm soát bố cục menu đó. Bạn có thể thêm mới hoặc cập nhật menu
+                    bằng
                     nút <span class="text-success">Cập nhật Menu</span></p>
                 <p>+ Bạn có thể thay đổi vị trí hiển thị của menu bằng cách <span class="text-success"></span> menu đến
                     vị trí mong muốn</p>
