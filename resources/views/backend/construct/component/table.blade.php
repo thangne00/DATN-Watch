@@ -16,7 +16,7 @@
             <th class="text-right">Điểm tích </th>
             <th class="text-center">Xác nhận</th>
             {{-- <th class="text-center">Tình Trạng</th> --}}
-            <th class="text-center">Thao tác</th>
+            <th class="text-center">Thao tác nhanh </th>
         </tr>
     </thead>
     <tbody>
