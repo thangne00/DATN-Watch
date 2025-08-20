@@ -11,7 +11,7 @@
                         <div class="panel-head">
                             <h2 class="heading-2"><span>Thay đổi mật khẩu</span></h2>
                             <div class="description">
-                                Quản lý thông tin hồ sơ để bảo mật tài khoản, nhập đầy đủ thông tin dể tiến hành thay đổi mật khẩu
+                                Quản lý thông tin hồ sơ để bảo mật tài khoản, tránh trường hợp bị lỗi
                             </div>
                         </div>
                         <div class="panel-body">
@@ -20,7 +20,7 @@
                                 @csrf
                                 
                                 <div class="uk-form-row form-row">
-                                    <label class="uk-form-label" for="form-h-it">Mật khẩu cũ</label>
+                                    <label class="uk-form-label" for="form-h-it">Hãy nhập tôi mật khẩu cũ của bạn</label>
                                     <div class="uk-form-controls">
                                         <input 
                                             type="password" 
@@ -32,7 +32,7 @@
                                     </div>
                                 </div>
                                 <div class="uk-form-row form-row">
-                                    <label class="uk-form-label" for="form-h-it">Mật khẩu mới</label>
+                                    <label class="uk-form-label" for="form-h-it">Hãy nhập mật khẩu mới</label>
                                     <div class="uk-form-controls">
                                         <input 
                                             type="password" 
