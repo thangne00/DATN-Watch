@@ -13,7 +13,7 @@
                 <p>+ Danh sách Menu giúp bạn dễ dàng kiểm soát bố cục menu đó. Bạn có thể thêm mới hoặc cập nhật menu
                     bằng
                     nút <span class="text-success">Cập nhật Menu</span></p>
-                <p>+ Bạn có thể thay đổi vị trí hiển thị của menu bằng cách <span class="text-success"></span> menu đến
+                <p>+ Bạn có thể thay đổi vị trí hiển thị của menu <span class="text-success"></span> menu đến
                     vị trí mong muốn</p>
                 <p>+ Dễ dàng khởi tạo menu con bằng cách ấn vào nút <span class="text-success">Quản lý menu con</span>
                 </p>
