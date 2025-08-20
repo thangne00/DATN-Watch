@@ -9,10 +9,10 @@
                 <div class="uk-width-large-4-5">
                     <div class="panel-profile">
                         <div class="panel-head">
-                            <h2 class="heading-2"><span>Danh sách bảo hành của công trình</span></h2>
+                            <h2 class="heading-2"><span></span></h2>
                             <div class="uk-flex uk-flex-middle uk-flex-space-between">
                                 <div class="description">
-                                    Quản lý thông tin chi tiết bảo hành sản phẩm của công trình tại {{ $system['homepage_brand'] }}
+                                  {{ $system['homepage_brand'] }}
                                 </div>
                                 <form action="{{ route('agency.check.warranty') }}" class="uk-form form search-form">
                                     <div class="uk-flex uk-flex-middle">
