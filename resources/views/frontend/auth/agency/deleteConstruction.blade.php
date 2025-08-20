@@ -10,7 +10,7 @@
                 <div class="panel-head">
                     <h2 class="heading-2">Xóa thông tin công trình</h2>
                     <div class="description">
-                        Quản lý thông tin chi tiết danh sách các công trình tại Omega Deco
+                      Thật sự là khô
                     </div>
                 </div>
                 <div class="panel-profile">
