@@ -5,7 +5,7 @@
                 <input type="checkbox" value="" id="checkAll" class="input-checkbox">
             </th>
             <th>Họ Tên</th>
-            <th>Số điện thoại</th>
+            <th>SĐT</th>
             <th>Email</th>
             <th style="width: 400px;">Nội dung nè</th>
             <th>Rate</th>

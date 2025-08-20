@@ -8,8 +8,8 @@
                 <div class="form-row">
                     <select name="post_catalogue_id" class="form-control setupSelect2" id="">
                         @foreach($dropdown as $key => $val)
-                        <option {{ 
-                            $key == old('post_catalogue_id', (isset($post->post_catalogue_id)) ? $post->post_catalogue_id : '') ? 'selected' : '' 
+                        <option {{
+                            $key == old('post_catalogue_id', (isset($post->post_catalogue_id)) ? $post->post_catalogue_id : '') ? 'selected' : ''
                             }} value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                     </select>
@@ -30,7 +30,7 @@
                     <label class="control-label">{{ __('messages.subparent') }}</label>
                     <select multiple name="catalogue[]" class="form-control setupSelect2" id="">
                         @foreach($dropdown as $key => $val)
-                        <option 
+                        <option
                             @if(is_array(old('catalogue', (
                                 isset($catalogue) && count($catalogue)) ?   $catalogue : [])
                                 ) && isset($post->post_catalogue_id) && $key !== $post->post_catalogue_id &&  in_array($key, old('catalogue', (isset($catalogue)) ? $catalogue : []))
@@ -46,12 +46,12 @@
 </div>
 <div class="ibox w">
     <div class="ibox-title">
-       
+
             <div class="uk-flex uk-flex-middle uk-flex-space-between">
                 <h5>Video Clip</h5>
-                <a href="" class="upload-video">Upload Video</a>
+                <a href="" class="upload-video">Upload Video nè</a>
             </div>
-        
+
     </div>
     <div class="ibox-content">
         <div class="row mb15">
