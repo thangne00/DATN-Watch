@@ -11,7 +11,7 @@
                         <div class="panel-head">
                             <h2 class="heading-2"><span>Hồ sơ của tôi</span></h2>
                             <div class="description">
-                                Quản lý thông tin hồ sơ để bảo mật tài khoản
+                                Thông tin của tài khoản
                             </div>
                         </div>
                         <div class="panel-body">
