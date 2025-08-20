@@ -12,7 +12,7 @@
                             <h2 class="heading-2"><span>Danh sách khách hàng</span></h2>
                             <div class="uk-flex uk-flex-middle uk-flex-space-between">
                                 <div class="description">
-                                    Quản lý thông tin chi tiết danh sách các khách hàng tại {{ $system['homepage_brand'] }}
+                                    Quản lý thông tin   {{ $system['homepage_brand'] }}
                                 </div>
                                 <form action="{{ route('agency.customer') }}" class="uk-form form search-form">
                                     <div class="uk-flex uk-flex-middle">
