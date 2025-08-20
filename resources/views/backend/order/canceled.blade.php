@@ -9,7 +9,7 @@
             <th>Trạng thái</th>
             <th>Lý do hủy</th>
             <th>Thời gian</th>
-            <th>Tài khoản hoàn tiền</th>
+            <th>Tài khoản hoàn </th>
             {{-- <th>Bill hoàn tiền</th>--}}
             <th>Hành động</th>
         </tr>
