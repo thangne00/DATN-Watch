@@ -14,7 +14,7 @@
                 <div class="panel-head">
                     <h2 class="heading-2">{{ $title }}</h2>
                     <div class="description">
-                        Quản lý thông tin chi tiết danh sách các công trình tại Omega Deco
+                       
                     </div>
                 </div>
                 <div class="panel-profile">
@@ -26,14 +26,14 @@
                                 <div class="col-lg-4">
                                     <div class="ibox w">
                                         <div class="ibox-title">
-                                            <h5>Thông tin chung</h5>
+                                            <h5></h5>
                                         </div>
                                         <div class="ibox-content">
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <input type="hidden" name="agency_id" value="{{ $agency->id }}">
                                                     <div class="form-row mb20">
-                                                        <div for="" class="control-label text-left">Chọn khách hàng<span class="text-danger"> (*)</span></div>
+                                                        <div for="" class="control-label text-left"><span class="text-danger"> (*)</span></div>
                                                         <select name="customer_id" class="input-text setupSelect2">
                                                             <option value="0">[Chọn khách hàng]</option>
                                                             @foreach($customers as $key => $val)
@@ -56,7 +56,7 @@
                                                     </div>
                     
                                                     <div class="form-row mb20">
-                                                        <div for="" class="control-label text-left">Xác nhận công trình<span class="text-danger"> (*)</span></div>
+                                                        <div for="" class="control-label text-left"><span class="text-danger"> (*)</span></div>
                                                         <select name="confirm" class="input-text setupSelect2">
                                                             @foreach(['pending' => 'Chưa xác nhận', 'confirmed' => 'Xác nhận'] as $key => $val)
                                                             <option {{ 
@@ -123,7 +123,7 @@
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="form-row mb20">
-                                                        <div for="" class="control-label text-left">Điểm tích lũy<span class="text-danger"> (*)</span></div>
+                                                        <div for="" class="control-label text-left"><span class="text-danger"> (*)</span></div>
                                                         <input
                                                             type="text"
                                                             class="input-text int"
