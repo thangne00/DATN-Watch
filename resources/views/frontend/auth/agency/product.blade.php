@@ -18,12 +18,12 @@
                             <table class="uk-table uk-table-hover uk-table-striped uk-table-condensed construction-table table100 ver1 m-b-110">
                                 <thead>
                                     <tr>
-                                        <th>Mã Sản phẩm</th>
-                                        <th>Tên sản phẩm</th>
+                                        <th>Mã </th>
+                                        <th>Tên </th>
                                         <th>Hệ màu</th>
                                         <th>Số lượng</th>
                                         <th>Bảo hành</th>
-                                        <th>Tình trạng</th>
+                                        <th>Tình trạng sản phẩm</th>
                                     </tr>
                                 </thead>
                                 <tbody>
