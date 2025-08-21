@@ -14,9 +14,9 @@
                 @include('backend.slide.component.aside')
             </div>
         </div>
-        
+
         <div class="text-right mb15">
-            <button class="btn btn-primary" type="submit" name="send" value="send">Lưu lại</button>
+            <button class="btn btn-primary" type="submit" name="send" value="send">Lưu </button>
         </div>
     </div>
 </form>
