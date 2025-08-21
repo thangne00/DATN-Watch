@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-lg-5">
                 <div class="panel-head">
-                    <div class="panel-title">Thông tin chung</div>
+                    <div class="panel-title">Thông tin </div>
                     <div class="panel-description">
                         <p>Bạn đang muốn xóa bản ghi: {{ $widget->email }}</p>
                         <p>Lưu ý: Không thể khôi phục bản ghi sau khi xóa nhé. Hãy chắc chắn bạn muốn thực hiện chức

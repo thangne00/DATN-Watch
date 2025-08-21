@@ -39,7 +39,7 @@
                         <div class="text-navy">{{ $review->score }}</div>
                     </td>
                     <td>
-                        <a href="{{ write_url($reviewableLink) }}" target="_blank">Click để xem đối tượng</a>
+                        <a href="{{ write_url($reviewableLink) }}" target="_blank">Click để xem </a>
                     </td>
                     <td class="text-center">
                         <a href="{{ route('review.delete', $review->id) }}" class="btn btn-danger"><i
