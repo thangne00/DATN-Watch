@@ -2,7 +2,7 @@
     <div class="ibox-title slide-wrapper">
         <div class="uk-flex uk-flex-middle uk-flex-space-between">
             <h5>Danh sách Slides</h5>
-            <button type="button" class="addSlide btn">Thêm slide</button>
+            <button type="button" class="addSlide btn">Thêm </button>
         </div>
     </div>
     @php

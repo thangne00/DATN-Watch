@@ -16,7 +16,7 @@
         </div>
 
         <div class="text-right mb15">
-            <button class="btn btn-primary" type="submit" name="send" value="send">Lưu lai</button>
+            <button class="btn btn-primary" type="submit" name="send" value="send">Lưu </button>
         </div>
     </div>
 </form>
