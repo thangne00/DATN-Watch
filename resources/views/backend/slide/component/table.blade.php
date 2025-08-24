@@ -6,7 +6,7 @@
             </th>
             <th>Tên loại</th>
             <th>Từ khóa</th>
-            <th>Danh sách Hình Ảnh</th>
+            <th>Danh sách Hình </th>
             <th class="text-center">Tình Trạng</th>
             <th class="text-center">Thao tác</th>
         </tr>
