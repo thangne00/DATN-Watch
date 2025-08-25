@@ -46,11 +46,11 @@
                                 <thead>
                                     <tr>
                                         <th>Mã CT</th>
-                                        <th>Tên công trình</th>
+                                        <th>Tên dự án</th>
                                         <th>Tên khách hàng</th>
                                         <th>Địa chỉ</th>
                                         <th>Xưởng</th>
-                                        <th>Chủ đầu tư</th>
+                                        <th>Tên chủ đầu tư</th>
                                         <th>Điểm</th>
                                         <th>Trạng thái</th>
                                         <th>Thao tác</th>
@@ -79,7 +79,7 @@
                                         @endforeach
                                     @else
                                     <tr>
-                                        <td colspan="8" class="text-danger">Bạn chưa có công trình nào</td>
+                                        <td colspan="8" class="text-danger">Bạn chưa có công trình nào, hãy kiểm tra và thử lại</td>
                                     </tr>
                                     @endif
                                 </tbody>
