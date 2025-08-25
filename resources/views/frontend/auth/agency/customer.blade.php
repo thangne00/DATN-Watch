@@ -30,7 +30,7 @@
                                         </div>
                                         <a href="{{ route('agency.customer.create')}}" class="btn-create">
                                             <i class="fa fa-plus mr5"></i>
-                                            Thêm mới khách hàng
+                                            Thêm mới
                                         </a>
                                     </div>
                                 </div>
@@ -41,9 +41,9 @@
                                 <thead>
                                     <tr>
                                         <th>Mã KH</th>
-                                        <th>Tên khách hàng</th>
+                                        <th>Tên</th>
                                         <th>Email</th>
-                                        <th>Số điện thoại</th>
+                                        <th>Sđt</th>
                                         <th>Địa chỉ</th>
                                         <th class="text-center">Trạng thái</th>
                                     </tr>
@@ -65,7 +65,7 @@
                                         @endforeach
                                     @else
                                     <tr>
-                                        <td colspan="8" class="text-danger">Bạn chưa có công trình nào</td>
+                                        <td colspan="8" class="text-danger">Bạn chưa có công trình nào, hãy kiểm tra và thử lại</td>
                                     </tr>
                                     @endif
                                 </tbody>
