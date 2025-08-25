@@ -12,7 +12,7 @@
                         <div class="login-form">
                             <form action="{{ route('fe.auth.agency.dologin') }}" class="uk-form form">
                                 @csrf
-                                <div class="form-heading">Đăng nhập đại lý</div>
+                                <div class="form-heading">Đăng nhập dành riêng cho đại lý</div>
                                 <div class="form-row">
                                     <input 
                                         type="text"
