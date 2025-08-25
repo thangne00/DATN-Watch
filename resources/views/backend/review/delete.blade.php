@@ -11,7 +11,7 @@
                     <div class="panel-description">
                         <p>Bạn đang muốn xóa bản ghi: {{ $widget->email }}</p>
                         <p>Lưu ý: Không thể khôi phục bản ghi sau khi xóa thì hãy chắc chắn bạn muốn thực hiện chức
-                            năng này</p>
+                            năng </p>
                     </div>
                 </div>
             </div>
