@@ -65,7 +65,7 @@
                                         @endforeach
                                     @else
                                     <tr>
-                                        <td colspan="8" class="text-danger">Bạn chưa có công trình nào, hãy kiểm tra và thử lại</td>
+                                        <td colspan="8" class="text-danger">Ban chua co cai nao? Thu lai</td>
                                     </tr>
                                     @endif
                                 </tbody>
