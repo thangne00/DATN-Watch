@@ -82,7 +82,7 @@
                                     <button type="submit" class="btn btn-primary block full-width m-b">Đăng ký</button>  
                             </form>
                             <p class="m-t mt5">
-                                <small>Newbie Code we app framework base on Bootstrap 3 © 2023</small>
+                                <small>© 2025</small>
                             </p>
                         </div>
                     </div>
