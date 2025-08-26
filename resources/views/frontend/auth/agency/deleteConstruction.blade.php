@@ -10,7 +10,7 @@
                 <div class="panel-head">
                     <h2 class="heading-2">Xóa thông tin công trình</h2>
                     <div class="description">
-                      Thật sự là khô
+                      Thật sự là không thể kiềm nổi bản thân nếu điều đó diễn ra
                     </div>
                 </div>
                 <div class="panel-profile">
@@ -25,7 +25,7 @@
                                         <div class="panel-title">Thông tin chung</div>
                                         <div class="panel-description">
                                             <p>Bạn đang muốn xóa công trình : {{ $construct->name }}</p>
-                                            <p>Lưu ý: Không thể khôi phục thông tin  sau khi xóa. Hãy chắc chắn bạn muốn thực hiện chức năng này</p>
+                                            <p>Lưu ý: Không thể khôi phục thông tin  sau khi xóa. Hãy chắc chắn bạn muốn thực hiện chức năng này. Hãy chắc chắn với lựa chọn này</p>
                                         </div>
                                     </div>
                                 </div>
