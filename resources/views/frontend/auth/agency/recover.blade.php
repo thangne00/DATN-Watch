@@ -21,7 +21,7 @@
                                 <tr>
                                     <td style="padding:0 35px;">
                                         <h1 style="color:#1e1e2d; font-weight:500; margin:0;font-size:32px;font-family:'Rubik',sans-serif;">
-                                            Bạn đã yêu cầu đặt lại mật khẩu của mình</h1>
+                                           Bạn đã yêu cầu cài lại mk của mình ?</h1>
                                         <span
                                             style="display:inline-block; vertical-align:middle; margin:10px 0 10px; border-bottom:1px solid #cecece; width:100px;"></span>
                                         <p style="color:#455056; font-size:15px;line-height:24px; margin:0;">
