@@ -18,12 +18,7 @@
                             <table class="uk-table uk-table-hover uk-table-striped uk-table-condensed construction-table table100 ver1 m-b-110">
                                 <thead>
                                     <tr>
-                                        <th>Mã </th>
-                                        <th>Tên </th>
-                                        <th>Hệ màu</th>
-                                        <th>Số lượng</th>
-                                        <th>Bảo hành</th>
-                                        <th>Tình trạng sản phẩm</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -38,13 +33,13 @@
                                             <td>{{ $name }}</td>
                                             <td>{{ $val->pivot->color }}</td>
                                             <td>{{ $val->pivot->quantity }}</td>
-                                            <td>{{ $val->pivot->warranty }} tháng</td>
+                                            <td>{{ $val->pivot->warranty }}</td>
                                             <td>{!! $active !!}</td>
                                         </tr>
                                         @endforeach
                                     @else
                                     <tr>
-                                        <td colspan="8" class="text-danger">Bạn chưa có công trình nào</td>
+                                        <td colspan="8" class="text-danger"></td>
                                     </tr>
                                     @endif
                                 </tbody>
