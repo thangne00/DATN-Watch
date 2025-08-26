@@ -9,7 +9,7 @@
                 <div class="uk-width-large-2-4">
                     <div class="panel-profile">
                         <div class="panel-head">
-                            <h2 class="heading-2"><span>Hồ sơ của tôi</span></h2>
+                            <h2 class="heading-2"><span>Hồ sơ cá nhân của tôi</span></h2>
                             <div class="description">
                                 Thông tin của tài khoản
                             </div>
