@@ -6,54 +6,7 @@
             <div class="uk-width-large-1-5">
                 @include('frontend.auth.agency.components.sidebar')
             </div>
-            <div class="uk-width-large-4-5">
-                <div class="panel-head">
-                    <h2 class="heading-2">Xóa thông tin công trình</h2>
-                    <div class="description">
-                      Thật sự là không thể kiềm nổi bản thân nếu điều đó diễn ra
-                    </div>
-                </div>
-                <div class="panel-profile">
-                    @include('backend.dashboard.component.formError')
-                    <form action="{{ route('agency.construction.destroy', $construct->id) }}" method="post" class="box">
-                        @csrf
-                        @method('DELETE')
-                        <div class="panel-wrapper">
-                            <div class="row">
-                                <div class="col-lg-5">
-                                    <div class="panel-head">
-                                        <div class="panel-title">Thông tin chung</div>
-                                        <div class="panel-description">
-                                            <p>Bạn đang muốn xóa công trình : {{ $construct->name }}</p>
-                                            <p>Lưu ý: Không thể khôi phục thông tin  sau khi xóa. Hãy chắc chắn bạn muốn thực hiện chức năng này. Hãy chắc chắn với lựa chọn này</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-7">
-                                    <div class="ibox">
-                                        <div class="ibox-content">
-                                            <div class="row mb15">
-                                                <div class="col-lg-12">
-                                                    <div class="form-row">
-                                                        <label for="" class="control-label text-left">Tên công trình</label>
-                                                        <input 
-                                                            type="text"
-                                                            name="name"
-                                                            value="{{ old('name', ($construct->name) ?? '' ) }}"
-                                                            class="form-control"
-                                                            placeholder=""
-                                                            autocomplete="off"
-                                                            readonly
-                                                        >
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        
-                           
+           
                         </div>
                         <div class="text-right mb15">
                             <button class="btn btn-danger" type="submit" name="send" value="send">Xóa dữ liệu</button>
