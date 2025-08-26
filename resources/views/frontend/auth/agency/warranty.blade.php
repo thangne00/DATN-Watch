@@ -21,8 +21,8 @@
                                             @endphp
                                             <select name="status" class="form-control">
                                                 <option value="">Tất cả</option>
-                                                <option value="active" {{ ($status == 'active') ? 'selected' : '' }}>Đã kích hoạt</option>
-                                                <option value="pending" {{ ($status == 'pending') ? 'selected' : '' }}>Kích hoạt bảo hành</option>
+                                                <option value="active" {{ ($status == 'active') ? 'selected' : '' }}>Kích hoạt</option>
+                                                <option value="pending" {{ ($status == 'pending') ? 'selected' : '' }}>Kích hoạt bảo hành</option>
                                             </select>
                                             <div class="input-group">
                                                 <input 
@@ -77,7 +77,7 @@
                                         @endforeach
                                     @else
                                     <tr>
-                                        <td colspan="8" class="text-danger">Bạn chưa có công trình nào</td>
+                                        <td colspan="8" class="text-danger">Bạn chưa có công trình nào. Đăng kí công trình mới</td>
                                     </tr>
                                     @endif
                                 </tbody>
